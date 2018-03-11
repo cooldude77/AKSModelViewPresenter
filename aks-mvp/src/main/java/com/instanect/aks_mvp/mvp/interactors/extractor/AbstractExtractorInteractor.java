@@ -1,6 +1,5 @@
 package com.instanect.aks_mvp.mvp.interactors.extractor;
 
-import com.instanect.mainapp.layers.network.rest.travelProcessors.extractors.ExtractorInterface;
 
 /**
  * Created by AKS on 10/9/2017.

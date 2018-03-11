@@ -1,7 +1,5 @@
 package com.instanect.aks_mvp.mvp.interactors.network.builder;
 
-import com.instanect.restvolley.newNetwork.common.api.RESTNetworkApi;
-import com.instanect.restvolley.newNetwork.common.scenario.scenario.service.di.InternetConnectionChecker;
 
 import dagger.Module;
 import dagger.Provides;
@@ -11,11 +9,5 @@ import dagger.Provides;
  */
 @Module
 public class InternetConnectionCheckerModule {
-
-    @Provides
-    public InternetConnectionChecker provideAppInternetConnectionChecker(
-            RESTNetworkApi restNetworkApi) {
-        return new InternetConnectionChecker(restNetworkApi);
-    }
 
 }

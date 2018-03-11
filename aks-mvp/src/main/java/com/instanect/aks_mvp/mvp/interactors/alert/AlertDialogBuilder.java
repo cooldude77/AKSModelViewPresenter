@@ -1,8 +1,5 @@
 package com.instanect.aks_mvp.mvp.interactors.alert;
 
-import com.instanect.mainapp.layers.business.generic.resources.AppResourceGetter;
-import com.instanect.mainapp.layers.ui.alert.GenericAlertDialogBuilder;
-
 import java.lang.reflect.InvocationTargetException;
 
 /**
@@ -14,17 +11,17 @@ public class AlertDialogBuilder {
 
     public AlertDialogInteractorInterface getInstance(
             Class<? extends AlertDialogInteractorInterface> cAlertDialogInteractorInterface,
-            AppResourceGetter appResourceGetter,
-            GenericAlertDialogBuilder genericAlertDialogBuilder)
+            AppResourceGetterInterface appResourceGetterInterface,
+            GenericAlertDialogBuilderInterface genericAlertDialogBuilderInterface)
             throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         Class[] arguments = new Class[2];
 
-        arguments[0] = AppResourceGetter.class;
-        arguments[1] = genericAlertDialogBuilder.getClass();
+        arguments[0] = AppResourceGetterInterface.class;
+        arguments[1] = genericAlertDialogBuilderInterface.getClass();
 
         return cAlertDialogInteractorInterface
                 .getDeclaredConstructor(arguments)
-                .newInstance(appResourceGetter, genericAlertDialogBuilder);
+                .newInstance(appResourceGetterInterface, genericAlertDialogBuilderInterface);
 
     }
 

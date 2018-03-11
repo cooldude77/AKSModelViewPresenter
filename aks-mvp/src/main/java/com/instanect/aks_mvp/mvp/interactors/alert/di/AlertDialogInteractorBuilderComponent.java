@@ -1,7 +1,8 @@
 package com.instanect.aks_mvp.mvp.interactors.alert.di;
 
 
-import com.instanect.mainapp.layers.business.mvp.interactors.alert.AlertDialogBuilder;
+
+import com.instanect.aks_mvp.mvp.interactors.alert.AlertDialogBuilder;
 
 import dagger.Component;
 

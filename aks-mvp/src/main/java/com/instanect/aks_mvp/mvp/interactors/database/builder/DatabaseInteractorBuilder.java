@@ -1,6 +1,6 @@
 package com.instanect.aks_mvp.mvp.interactors.database.builder;
 
-import com.instanect.mainapp.layers.business.mvp.interactors.database.interfaces.DatabaseInteractorInterface;
+import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseInteractorInterface;
 
 import java.lang.reflect.InvocationTargetException;
 

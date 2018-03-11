@@ -1,6 +1,6 @@
 package com.instanect.aks_mvp.mvp.interactors.network.interfaces;
 
-import com.instanect.restvolley.newNetwork.common.authorization.AuthorizationHeaderInterface;
+import com.instanect.aks_mvp.mvp.interactors.extractor.NetworkResponseInterface;
 
 import java.util.HashMap;
 
@@ -15,4 +15,21 @@ public interface NetworkInteractorInterface {
     void execute(AuthorizationHeaderInterface authorizationHeaderInterface,
                  String query,
                  HashMap<String, String> postOrPutBody);
+
+
+    public void onError(String errorMessage, int errorCode);
+
+
+    public void onInternetNotAvailable();
+
+
+    public void onAdditionalUrlNotAvailable(String messageOnNotAvailable);
+
+
+    public void onScenarioExecutionAbort();
+
+
+    public <T> void onSuccess(NetworkResponseInterface<T> networkResponse);
+
+
 }

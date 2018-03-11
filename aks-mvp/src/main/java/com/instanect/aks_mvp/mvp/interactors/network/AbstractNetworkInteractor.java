@@ -1,10 +1,9 @@
 package com.instanect.aks_mvp.mvp.interactors.network;
 
-import com.instanect.mainapp.layers.business.mvp.interactors.network.interfaces.NetworkInteractorInterface;
-import com.instanect.mainapp.layers.business.mvp.interactors.network.interfaces.NetworkInteractorResponseInterface;
-import com.instanect.restvolley.newNetwork.common.responseObject.NetworkResponse;
-import com.instanect.restvolley.newNetwork.common.scenario.executor.interfaces.ScenarioExecutionResponseInterface;
-import com.instanect.restvolley.newNetwork.common.scenario.scenario.service.ScenarioService;
+
+import com.instanect.aks_mvp.mvp.interactors.extractor.NetworkResponseInterface;
+import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteractorInterface;
+import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteractorResponseInterface;
 
 import junit.framework.Assert;
 
@@ -14,12 +13,12 @@ import junit.framework.Assert;
 
 abstract public class AbstractNetworkInteractor implements NetworkInteractorInterface,
         ScenarioExecutionResponseInterface {
-    protected final ScenarioService scenarioService;
+    protected final ScenarioServiceInterface scenarioServiceInterface;
 
     protected NetworkInteractorResponseInterface networkInteractorResponseInterface;
 
-    public AbstractNetworkInteractor(ScenarioService scenarioService) {
-        this.scenarioService = scenarioService;
+    public AbstractNetworkInteractor(ScenarioServiceInterface scenarioServiceInterface) {
+        this.scenarioServiceInterface = scenarioServiceInterface;
     }
 
     @Override
@@ -51,7 +50,7 @@ abstract public class AbstractNetworkInteractor implements NetworkInteractorInte
     }
 
     @Override
-    public <T> void onSuccess(NetworkResponse<T> networkResponse) {
+    public <T> void onSuccess(NetworkResponseInterface<T> networkResponse) {
         Assert.assertNotNull(networkInteractorResponseInterface);
         networkInteractorResponseInterface.onNetworkInteractorCallSuccessful(networkResponse);
     }
@@ -59,7 +58,7 @@ abstract public class AbstractNetworkInteractor implements NetworkInteractorInte
 
     public void tryAbort() {
 
-        scenarioService.tryAbort();
+        scenarioServiceInterface.tryAbort();
 
     }
 

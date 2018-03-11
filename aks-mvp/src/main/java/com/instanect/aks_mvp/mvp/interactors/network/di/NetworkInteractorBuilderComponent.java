@@ -1,8 +1,7 @@
 package com.instanect.aks_mvp.mvp.interactors.network.di;
 
-import com.instanect.mainapp.layers.business.mvp.interactors.network.builder.NetworkInteractorBuilder;
-import com.instanect.restvolley.newNetwork.common.api.di.RESTNetworkApiComponent;
-import com.instanect.restvolley.newNetwork.common.scenario.scenario.service.di.ScenarioServiceComponent;
+
+import com.instanect.aks_mvp.mvp.interactors.network.builder.NetworkInteractorBuilder;
 
 import dagger.Component;
 
@@ -11,8 +10,7 @@ import dagger.Component;
  */
 
 @Component(modules = NetworkInteractorBuilderModule.class,
-        dependencies = {RESTNetworkApiComponent.class,
-                ScenarioServiceComponent.class})
+        dependencies = {})
 public interface NetworkInteractorBuilderComponent {
     NetworkInteractorBuilder getNetworkInteractorBuilder();
 }

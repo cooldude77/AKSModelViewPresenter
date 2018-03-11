@@ -1,6 +1,7 @@
 package com.instanect.aks_mvp.mvp.interactors.permission.di;
 
-import com.instanect.mainapp.layers.business.mvp.interactors.permission.builder.PermissionInteractorBuilder;
+
+import com.instanect.aks_mvp.mvp.interactors.permission.builder.PermissionInteractorBuilder;
 
 import dagger.Module;
 import dagger.Provides;

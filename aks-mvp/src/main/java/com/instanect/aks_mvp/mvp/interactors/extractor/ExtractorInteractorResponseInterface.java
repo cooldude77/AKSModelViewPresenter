@@ -1,6 +1,6 @@
 package com.instanect.aks_mvp.mvp.interactors.extractor;
 
-import com.instanect.mainapp.layers.business.database.DatabaseObjectInterface;
+import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseObjectInterface;
 
 /**
  * Created by AKS on 10/9/2017.

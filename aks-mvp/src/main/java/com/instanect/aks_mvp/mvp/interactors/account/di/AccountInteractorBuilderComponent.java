@@ -1,6 +1,7 @@
 package com.instanect.aks_mvp.mvp.interactors.account.di;
 
-import com.instanect.mainapp.layers.business.mvp.interactors.account.builder.AccountInteractorBuilder;
+
+import com.instanect.aks_mvp.mvp.interactors.account.builder.AccountInteractorBuilder;
 
 import dagger.Component;
 

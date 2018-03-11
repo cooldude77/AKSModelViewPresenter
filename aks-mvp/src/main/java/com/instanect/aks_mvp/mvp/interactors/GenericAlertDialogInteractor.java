@@ -1,15 +1,39 @@
 package com.instanect.aks_mvp.mvp.interactors;
 
-import com.instanect.mainapp.layers.business.generic.resources.AppResourceGetter;
-import com.instanect.mainapp.layers.business.mvp.interactors.alert.AbstractAlertDialog;
-import com.instanect.mainapp.layers.ui.alert.GenericAlertDialogBuilder;
+
+import android.support.v7.app.AlertDialog;
+
+import com.instanect.aks_mvp.mvp.interactors.alert.AbstractAlertDialog;
+import com.instanect.aks_mvp.mvp.interactors.alert.AppResourceGetterInterface;
+import com.instanect.aks_mvp.mvp.interactors.alert.GenericAlertDialogBuilderInterface;
 
 /**
  * Created by AKS on 12/14/2017.
  */
 
 public class GenericAlertDialogInteractor extends AbstractAlertDialog {
-    public GenericAlertDialogInteractor(AppResourceGetter appResourceGetter, GenericAlertDialogBuilder genericAlertDialogBuilder) {
-        super(appResourceGetter, genericAlertDialogBuilder);
+    public GenericAlertDialogInteractor(AppResourceGetterInterface appResourceGetterInterface,
+                                        GenericAlertDialogBuilderInterface genericAlertDialogBuilder) {
+        super(appResourceGetterInterface, genericAlertDialogBuilder);
+    }
+
+    @Override
+    public AlertDialog getGenericRESTFailureAlertDialog(String failureMessage) {
+        return null;
+    }
+
+    @Override
+    public AlertDialog getGeneralOkMessageAlertDialog(String errorMessage) {
+        return null;
+    }
+
+    @Override
+    public AlertDialog getInternetNotAvailable() {
+        return null;
+    }
+
+    @Override
+    public AlertDialog getAdditionalUrlNotAvailableAlertDialog(String messageOnNotAvailable) {
+        return null;
     }
 }

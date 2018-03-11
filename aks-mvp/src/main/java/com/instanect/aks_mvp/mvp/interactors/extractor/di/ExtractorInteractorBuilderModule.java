@@ -1,7 +1,8 @@
 package com.instanect.aks_mvp.mvp.interactors.extractor.di;
 
 
-import com.instanect.mainapp.layers.business.mvp.interactors.extractor.ExtractorInteractorBuilder;
+
+import com.instanect.aks_mvp.mvp.interactors.extractor.ExtractorInteractorBuilder;
 
 import dagger.Module;
 import dagger.Provides;

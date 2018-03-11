@@ -3,10 +3,8 @@ package com.instanect.aks_mvp.mvp.interactors.database.di;
 
 import android.content.Context;
 
-import com.instanect.mainapp.layers.business.database.api.DatabaseApi;
-import com.instanect.mainapp.layers.business.database.api.di.DaggerDatabaseApiComponent;
-import com.instanect.mainapp.layers.business.database.api.di.DatabaseApiModule;
-import com.instanect.mainapp.layers.business.mvp.interactors.database.builder.DatabaseInteractorBuilder;
+
+import com.instanect.aks_mvp.mvp.interactors.database.builder.DatabaseInteractorBuilder;
 
 import dagger.Module;
 import dagger.Provides;
@@ -27,11 +25,7 @@ public class DatabaseInteractorBuilderModule {
 
     @Provides
     public DatabaseInteractorBuilder provideDatabaseInteractorBuilder() {
-        DatabaseApi databaseApi = DaggerDatabaseApiComponent.builder()
-                .databaseApiModule(new DatabaseApiModule(context))
-                .build()
-                .getDatabaseApi();
-        return new DatabaseInteractorBuilder(databaseApi);
+        return null;
     }
 
 

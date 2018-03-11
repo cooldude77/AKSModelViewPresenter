@@ -5,5 +5,9 @@ package com.instanect.aks_mvp.mvp.interactors.alert;
  */
 
 public interface AlertDialogInteractorInterface {
+    void onPositiveButtonClicked(int alertCode);
+
+    void onNegativeButtonClicked(int alertCode);
+
     void setAlertDialogResponseInterface(AlertDialogResponseInterface alertDialogResponseInterface);
 }

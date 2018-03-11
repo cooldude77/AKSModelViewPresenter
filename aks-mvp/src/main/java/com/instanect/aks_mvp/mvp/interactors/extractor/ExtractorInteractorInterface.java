@@ -1,6 +1,5 @@
 package com.instanect.aks_mvp.mvp.interactors.extractor;
 
-import com.instanect.restvolley.newNetwork.common.responseObject.NetworkResponse;
 
 import org.json.JSONObject;
 
@@ -10,7 +9,7 @@ import org.json.JSONObject;
 
 public interface ExtractorInteractorInterface {
 
-    void extract(NetworkResponse<JSONObject> networkResponse);
+    void extract(NetworkResponseInterface<JSONObject> networkResponse);
 
     void setExtractorInteractorResponseInterface(ExtractorInteractorResponseInterface extractorInteractorResponseInterface);
 }

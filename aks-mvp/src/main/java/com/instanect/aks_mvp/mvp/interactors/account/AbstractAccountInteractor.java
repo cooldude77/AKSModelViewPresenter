@@ -1,9 +1,7 @@
 package com.instanect.aks_mvp.mvp.interactors.account;
 
-import com.instanect.mainapp.layers.business.authentication.account.AccountAlreadyExistsException;
-import com.instanect.mainapp.layers.business.authentication.account.interfaces.AppAccountManagerInterface;
-import com.instanect.mainapp.layers.business.mvp.interactors.account.interfaces.AccountInteractorInterface;
-import com.instanect.mainapp.layers.business.mvp.interactors.account.interfaces.AccountInteractorResponseInterface;
+import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountInteractorInterface;
+import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountInteractorResponseInterface;
 
 /**
  * Created by AKS on 10/7/2017.

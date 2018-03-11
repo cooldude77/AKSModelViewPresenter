@@ -1,12 +1,8 @@
 package com.instanect.aks_mvp.mvp.interactors.alert;
 
+
 import android.content.Context;
 import android.support.v7.app.AlertDialog;
-
-import com.instanect.mainapp.R;
-import com.instanect.mainapp.layers.business.generic.resources.AppResourceGetter;
-import com.instanect.mainapp.layers.ui.alert.GenericAlertDialogBuilder;
-import com.instanect.mainapp.layers.ui.alert.GenericAlertDialogResponseInterface;
 
 import static junit.framework.Assert.assertNotNull;
 
@@ -15,17 +11,17 @@ import static junit.framework.Assert.assertNotNull;
  */
 
 abstract public class AbstractAlertDialog implements AlertDialogInteractorInterface,
-        GenericAlertDialogResponseInterface {
-    protected final AppResourceGetter appResourceGetter;
-    protected final GenericAlertDialogBuilder genericAlertDialogBuilder;
+        GenericAlertDialogBuilderInterface {
+    protected final AppResourceGetterInterface appResourceGetterInterface;
+    protected final GenericAlertDialogBuilderInterface genericAlertDialogBuilderInterface;
     protected AlertDialogResponseInterface alertDialogResponseInterface;
     private Context activityContext;
 
-    public AbstractAlertDialog(AppResourceGetter appResourceGetter,
-                               GenericAlertDialogBuilder genericAlertDialogBuilder) {
-        this.appResourceGetter = appResourceGetter;
+    public AbstractAlertDialog(AppResourceGetterInterface appResourceGetterInterface,
+                               GenericAlertDialogBuilderInterface genericAlertDialogBuilderInterface) {
+        this.appResourceGetterInterface = appResourceGetterInterface;
 
-        this.genericAlertDialogBuilder = genericAlertDialogBuilder;
+        this.genericAlertDialogBuilderInterface = genericAlertDialogBuilderInterface;
     }
 
     public Context getActivityContext() {
@@ -38,7 +34,7 @@ abstract public class AbstractAlertDialog implements AlertDialogInteractorInterf
     }
 
     public String getString(int resId) {
-        return appResourceGetter
+        return appResourceGetterInterface
                 .getResourceString(resId);
     }
 
@@ -58,13 +54,8 @@ abstract public class AbstractAlertDialog implements AlertDialogInteractorInterf
     public void showGeneralOkMessage(String errorMessage) {
 
         assertNotNull(getActivityContext());
-        AlertDialog alertDialog = genericAlertDialogBuilder
-                .builder(activityContext)
-                .setTitle(getString(R.string.alert_general_error_title))
-                .setMessage(errorMessage)
-                .setPositiveButtonText(getString(R.string.common_ok))
-                .build();
-
+        AlertDialog alertDialog = genericAlertDialogBuilderInterface
+        .getGeneralOkMessageAlertDialog(errorMessage);
         alertDialog.show();
 
     }
