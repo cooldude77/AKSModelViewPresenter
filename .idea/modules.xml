@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AKSModelViewPresenter.iml" filepath="$PROJECT_DIR$/AKSModelViewPresenter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aks-mvp/aks-mvp.iml" filepath="$PROJECT_DIR$/aks-mvp/aks-mvp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
