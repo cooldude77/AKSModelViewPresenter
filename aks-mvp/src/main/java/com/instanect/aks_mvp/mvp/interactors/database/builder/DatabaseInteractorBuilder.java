@@ -10,15 +10,10 @@ import java.lang.reflect.InvocationTargetException;
 
 public class DatabaseInteractorBuilder {
 
-    private DatabaseApiInterface databaseApiInterface;
-
-    public DatabaseInteractorBuilder(DatabaseApiInterface databaseApiInterface) {
-
-        this.databaseApiInterface = databaseApiInterface;
-    }
 
     public DatabaseInteractorInterface getInstance(
-            Class<? extends DatabaseInteractorInterface> classDatabaseInteractorInterface)
+            Class<? extends DatabaseInteractorInterface> classDatabaseInteractorInterface,
+            DatabaseApiInterface databaseApiInterface)
             throws NoSuchMethodException,
             IllegalAccessException,
             InvocationTargetException,

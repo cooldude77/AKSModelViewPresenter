@@ -1,8 +1,9 @@
 package com.instanect.aks_mvp.mvp.interactors.account.builder;
 
-import android.accounts.AccountManager;
 import android.content.Context;
 
+import com.instanect.aks_mvp.mvp.interactors.account.AbstractAccountInteractor;
+import com.instanect.aks_mvp.mvp.interactors.account.AppAccountManagerInterface;
 import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountInteractorInterface;
 
 import java.lang.reflect.InvocationTargetException;
@@ -13,18 +14,19 @@ import java.lang.reflect.InvocationTargetException;
 
 public class AccountInteractorBuilder {
 
-    private Context context;
+    public AccountInteractorInterface getInstance(
+            Class<? extends AbstractAccountInteractor> accountInteractorClass,
+            AppAccountManagerInterface appAccountManagerInterface)
+            throws NoSuchMethodException,
+            IllegalAccessException, InvocationTargetException, InstantiationException {
 
-    public AccountInteractorBuilder(Context context) {
-
-        this.context = context;
-    }
+        Class[] arguments = new Class[1];
+        arguments[0] = appAccountManagerInterface.getClass();
 
 
-    public AccountInteractorInterface getInstance(Class<? extends AccountInteractorInterface> cAccountInteractorInterface) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        AccountManager manager = AccountManager.get(context);
-
-        return null;
+        return accountInteractorClass
+                .getDeclaredConstructor(arguments)
+                .newInstance(appAccountManagerInterface);
 
     }
 }

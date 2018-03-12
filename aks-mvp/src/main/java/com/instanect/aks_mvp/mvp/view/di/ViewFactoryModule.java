@@ -1,6 +1,6 @@
 package com.instanect.aks_mvp.mvp.view.di;
 
-import com.instanect.mainapp.layers.business.mvp.view.factory.ViewFactory;
+import com.instanect.aks_mvp.mvp.view.factory.ViewFactory;
 
 import dagger.Module;
 import dagger.Provides;

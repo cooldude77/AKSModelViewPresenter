@@ -2,8 +2,7 @@ package com.instanect.aks_mvp.mvp.view;
 
 import android.widget.Button;
 
-import com.instanect.mainapp.layers.business.mvp.view.helper.AppViewHelper;
-import com.instanect.mainapp.layers.business.mvp.view.interfaces.ViewInterface;
+import com.instanect.aks_mvp.mvp.view.interfaces.ViewInterface;
 
 
 /**
@@ -12,13 +11,14 @@ import com.instanect.mainapp.layers.business.mvp.view.interfaces.ViewInterface;
 
 public class AbstractView implements ViewInterface {
 
-    private AppViewHelper appViewHelper;
+    private AppViewHelperInterface appViewHelperInterface;
     private int progressBarId;
 
-    public AbstractView(AppViewHelper appViewHelper) {
+    public AbstractView(AppViewHelperInterface appViewHelperInterface) {
 
-        this.appViewHelper = appViewHelper;
+        this.appViewHelperInterface = appViewHelperInterface;
     }
+
 
     public void setProgressBarId(int progressBarId) {
 
@@ -28,7 +28,7 @@ public class AbstractView implements ViewInterface {
     @Override
     public Button findButton(int resIdButton) {
 
-        return appViewHelper.findViewById(resIdButton);
+        return appViewHelperInterface.findViewById(resIdButton);
     }
 
     /**
@@ -39,60 +39,60 @@ public class AbstractView implements ViewInterface {
      */
     protected String getStringFromEditText(int id) {
 
-        return appViewHelper.getStringFromEditText(id);
+        return appViewHelperInterface.getStringFromEditText(id);
     }
 
     public String getStringFromResource(int stringResId) {
-        return appViewHelper.getStringFromResource(stringResId);
+        return appViewHelperInterface.getStringFromResource(stringResId);
     }
 
     @Override
     public void toastLong(String message) {
-        appViewHelper.toastLong(message);
+        appViewHelperInterface.toastLong(message);
     }
 
     @Override
     public void toastShort(String message) {
-        appViewHelper.toastShort(message);
+        appViewHelperInterface.toastShort(message);
     }
 
     @Override
     public void toastLong(int resId) {
-        appViewHelper.toastLong(resId);
+        appViewHelperInterface.toastLong(resId);
     }
 
     @Override
     public void toastShort(int resId) {
-        appViewHelper.toastShort(resId);
+        appViewHelperInterface.toastShort(resId);
     }
 
     @Override
     public void hideProgressIndicator(int resIdProgressBar) {
-        appViewHelper.hideProgressIndicator(resIdProgressBar);
+        appViewHelperInterface.hideProgressIndicator(resIdProgressBar);
     }
 
     @Override
     public void showProgressIndicator(int resIdProgressBar) {
-        appViewHelper.showProgressIndicator(resIdProgressBar);
+        appViewHelperInterface.showProgressIndicator(resIdProgressBar);
     }
 
     @Override
     public void hideProgressIndicator() {
-        appViewHelper.hideProgressIndicator(progressBarId);
+        appViewHelperInterface.hideProgressIndicator(progressBarId);
     }
 
     @Override
     public void showProgressIndicator() {
-        appViewHelper.showProgressIndicator(progressBarId);
+        appViewHelperInterface.showProgressIndicator(progressBarId);
     }
 
     @Override
     public void hideKeyBoard() {
-        appViewHelper.hideKeyBoard();
+        appViewHelperInterface.hideKeyBoard();
     }
 
     @Override
     public void showKeyBoard() {
-        appViewHelper.hideKeyBoard();
+        appViewHelperInterface.hideKeyBoard();
     }
 }

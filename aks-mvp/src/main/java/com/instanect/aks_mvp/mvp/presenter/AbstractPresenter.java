@@ -1,20 +1,19 @@
 package com.instanect.aks_mvp.mvp.presenter;
 
-import com.instanect.mainapp.features.signup.form.PresenterNetworkResponseInterface;
-import com.instanect.mainapp.features.signup.form.PresenterResponseInterface;
-import com.instanect.mainapp.layers.business.database.DatabaseObjectInterface;
-import com.instanect.mainapp.layers.business.mvp.interactors.alert.AbstractAlertDialog;
-import com.instanect.mainapp.layers.business.mvp.interactors.database.AbstractDatabaseInteractor;
-import com.instanect.mainapp.layers.business.mvp.interactors.database.interfaces.DatabaseInteractorResponseInterface;
-import com.instanect.mainapp.layers.business.mvp.interactors.extractor.AbstractExtractorInteractor;
-import com.instanect.mainapp.layers.business.mvp.interactors.extractor.ExtractorInteractorResponseInterface;
-import com.instanect.mainapp.layers.business.mvp.interactors.network.AbstractNetworkInteractor;
-import com.instanect.mainapp.layers.business.mvp.interactors.network.interfaces.NetworkInteractorResponseInterface;
-import com.instanect.mainapp.layers.business.mvp.interactors.preferences.AbstractPreferencesInteractor;
-import com.instanect.mainapp.layers.business.mvp.interactors.preferences.interfaces.PreferencesInteractorResponseInterface;
-import com.instanect.mainapp.layers.business.mvp.presenter.interfaces.PresenterInterface;
-import com.instanect.mainapp.layers.business.mvp.view.interfaces.ViewInterface;
-import com.instanect.restvolley.newNetwork.common.responseObject.NetworkResponse;
+import com.instanect.aks_mvp.mvp.interactors.alert.AbstractAlertDialog;
+import com.instanect.aks_mvp.mvp.interactors.database.AbstractDatabaseInteractor;
+import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseInteractorResponseInterface;
+import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseObjectInterface;
+import com.instanect.aks_mvp.mvp.interactors.extractor.AbstractExtractorInteractor;
+import com.instanect.aks_mvp.mvp.interactors.extractor.ExtractorInteractorResponseInterface;
+import com.instanect.aks_mvp.mvp.interactors.extractor.NetworkResponseInterface;
+import com.instanect.aks_mvp.mvp.interactors.network.AbstractNetworkInteractor;
+import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteractorResponseInterface;
+import com.instanect.aks_mvp.mvp.interactors.preferences.AbstractPreferencesInteractor;
+import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.PreferencesInteractorResponseInterface;
+import com.instanect.aks_mvp.mvp.presenter.interfaces.PresenterInterface;
+import com.instanect.aks_mvp.mvp.presenter.interfaces.PresenterResponseInterface;
+import com.instanect.aks_mvp.mvp.view.interfaces.ViewInterface;
 
 /**
  * Abs class to be extended by all presenters
@@ -87,11 +86,6 @@ public abstract class AbstractPresenter implements PresenterInterface,
         return presenterResponseInterface;
     }
 
-    @Override
-    public void attachView(ViewInterface viewInterface) {
-
-        this.view = viewInterface;
-    }
 
     public ViewInterface getView() {
         return view;
@@ -112,27 +106,16 @@ public abstract class AbstractPresenter implements PresenterInterface,
     @Override
     public void onNetworkInteractorScenarioCallFailure(String failureMessages, int errorCode) {
 
-        assert presenterResponseInterface instanceof PresenterNetworkResponseInterface;
-
-        ((PresenterNetworkResponseInterface) presenterResponseInterface)
-                .onRESTCallFailure(failureMessages, errorCode);
-
     }
 
 
     @Override
     public void onInternetNotAvailable() {
-        assert presenterResponseInterface instanceof PresenterNetworkResponseInterface;
-
-        ((PresenterNetworkResponseInterface) presenterResponseInterface)
-                .onInternetNotAvailable();
     }
 
     @Override
     public void onAdditionUrlNotAvailable(String messageOnNotAvailable) {
-        ((PresenterNetworkResponseInterface) presenterResponseInterface)
-                .onAdditionalUrlNotAvailable(messageOnNotAvailable);
-    }
+         }
 
     @Override
     public void onNetworkCallAbort() {
@@ -146,7 +129,7 @@ public abstract class AbstractPresenter implements PresenterInterface,
     }
 
     @Override
-    public <T> void onNetworkInteractorCallSuccessful(NetworkResponse<T> networkResponse) {
+    public <T> void onNetworkInteractorCallSuccessful(NetworkResponseInterface<T> tNetworkResponseInterface) {
 
     }
 

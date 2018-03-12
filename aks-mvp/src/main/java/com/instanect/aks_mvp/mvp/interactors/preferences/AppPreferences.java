@@ -1,16 +1,11 @@
 package com.instanect.aks_mvp.mvp.interactors.preferences;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-
-import com.google.gson.Gson;
-
 /**
  * Created by AKS on 11/9/2017.
  */
 
 public class AppPreferences {
-
+    /*
     protected final Context context;
     protected final Gson gson;
 
@@ -59,5 +54,5 @@ public class AppPreferences {
                 .clear().apply();
 
     }
-
+    */
 }

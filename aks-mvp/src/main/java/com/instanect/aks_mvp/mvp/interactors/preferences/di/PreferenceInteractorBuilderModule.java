@@ -14,17 +14,9 @@ import dagger.Provides;
 @Module
 public class PreferenceInteractorBuilderModule {
 
-    private Context context;
-    private Gson gson;
-
-    public PreferenceInteractorBuilderModule(Context context, Gson gson) {
-
-        this.context = context;
-        this.gson = gson;
-    }
 
     @Provides
     public PreferenceInteractorBuilder providePreferenceInteractorBuilder() {
-        return new PreferenceInteractorBuilder(context, gson);
+        return new PreferenceInteractorBuilder();
     }
 }

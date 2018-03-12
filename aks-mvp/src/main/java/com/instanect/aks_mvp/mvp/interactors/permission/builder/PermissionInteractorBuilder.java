@@ -1,7 +1,8 @@
 package com.instanect.aks_mvp.mvp.interactors.permission.builder;
 
-import com.instanect.mainapp.layers.business.mvp.interactors.permission.interfaces.PermissionInteractorInterface;
-import com.instanect.mainapp.layers.business.mvp.interactors.permission.interfaces.PermissionInteractorResponseInterface;
+
+import com.instanect.aks_mvp.mvp.interactors.permission.interfaces.PermissionInteractorInterface;
+import com.instanect.aks_mvp.mvp.interactors.permission.interfaces.PermissionInteractorResponseInterface;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -16,7 +17,7 @@ public class PermissionInteractorBuilder {
             Class<? extends PermissionInteractorInterface> cPermissionInterface,
             PermissionInteractorResponseInterface permissionResponseInterface) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         Class[] arguments = new Class[1];
-        arguments[0] = PermissionInteractorResponseInterface.class;
+        arguments[0] = permissionResponseInterface.getClass();
 
         return cPermissionInterface
                 .getDeclaredConstructor(arguments)

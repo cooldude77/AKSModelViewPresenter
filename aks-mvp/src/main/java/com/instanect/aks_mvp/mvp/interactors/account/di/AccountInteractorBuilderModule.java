@@ -3,7 +3,6 @@ package com.instanect.aks_mvp.mvp.interactors.account.di;
 
 import android.content.Context;
 
-
 import com.instanect.aks_mvp.mvp.interactors.account.builder.AccountInteractorBuilder;
 
 import dagger.Module;
@@ -25,7 +24,7 @@ public class AccountInteractorBuilderModule {
 
     @Provides
     public AccountInteractorBuilder provideAccountInteractorBuilder() {
-        return new AccountInteractorBuilder(context);
+        return new AccountInteractorBuilder();
     }
 
 }

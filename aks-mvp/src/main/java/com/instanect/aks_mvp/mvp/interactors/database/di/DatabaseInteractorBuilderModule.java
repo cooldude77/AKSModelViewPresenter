@@ -16,16 +16,10 @@ import dagger.Provides;
 @Module
 public class DatabaseInteractorBuilderModule {
 
-    //   DatabaseApi databaseApiInterface;
-    private Context context;
-
-    public DatabaseInteractorBuilderModule(Context context) {
-        this.context = context;
-    }
 
     @Provides
     public DatabaseInteractorBuilder provideDatabaseInteractorBuilder() {
-        return null;
+        return new DatabaseInteractorBuilder();
     }
 
 

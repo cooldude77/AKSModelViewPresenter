@@ -2,8 +2,10 @@ package com.instanect.aks_mvp.mvp.interactors.network;
 
 
 import com.instanect.aks_mvp.mvp.interactors.extractor.NetworkResponseInterface;
+import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkExecutionResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteractorResponseInterface;
+import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInterface;
 
 import junit.framework.Assert;
 
@@ -12,13 +14,13 @@ import junit.framework.Assert;
  */
 
 abstract public class AbstractNetworkInteractor implements NetworkInteractorInterface,
-        ScenarioExecutionResponseInterface {
-    protected final ScenarioServiceInterface scenarioServiceInterface;
+        NetworkExecutionResponseInterface {
+    protected final NetworkInterface networkInterface;
 
     protected NetworkInteractorResponseInterface networkInteractorResponseInterface;
 
-    public AbstractNetworkInteractor(ScenarioServiceInterface scenarioServiceInterface) {
-        this.scenarioServiceInterface = scenarioServiceInterface;
+    public AbstractNetworkInteractor(NetworkInterface networkInterface) {
+        this.networkInterface = networkInterface;
     }
 
     @Override
@@ -58,7 +60,7 @@ abstract public class AbstractNetworkInteractor implements NetworkInteractorInte
 
     public void tryAbort() {
 
-        scenarioServiceInterface.tryAbort();
+        networkInterface.tryAbort();
 
     }
 

@@ -1,6 +1,6 @@
 package com.instanect.aks_mvp.mvp.interactors.network.builder;
 
-import com.instanect.aks_mvp.mvp.interactors.network.ScenarioServiceInterface;
+import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInterface;
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteractorInterface;
 
 import java.lang.reflect.InvocationTargetException;
@@ -11,11 +11,11 @@ import java.lang.reflect.InvocationTargetException;
 
 public class NetworkInteractorBuilder {
 
-    private ScenarioServiceInterface scenarioServiceInterface;
+    private NetworkInterface networkInterface;
 
-    public NetworkInteractorBuilder(ScenarioServiceInterface scenarioServiceInterface) {
+    public NetworkInteractorBuilder(NetworkInterface networkInterface) {
 
-        this.scenarioServiceInterface = scenarioServiceInterface;
+        this.networkInterface = networkInterface;
     }
 
     public NetworkInteractorInterface getInstance(
@@ -28,13 +28,13 @@ public class NetworkInteractorBuilder {
             InstantiationException {
 
         Class[] arguments = new Class[1];
-        arguments[0] = ScenarioServiceInterface.class;
+        arguments[0] = NetworkInterface.class;
 
 
         return cNetworkInteractorInterface
                 .getDeclaredConstructor(arguments)
                 .newInstance(
-                        scenarioServiceInterface
+                        networkInterface
                 );
 
 

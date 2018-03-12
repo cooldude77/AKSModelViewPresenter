@@ -11,14 +11,14 @@ public class ExtractorInteractorBuilder {
 
     public ExtractorInteractorInterface getInstance(
             Class<? extends ExtractorInteractorInterface> cInterface,
-            Class<? extends ExtractorInterface> classExtractorInterface)
+            ExtractorInterface extractorInterface)
             throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         Class[] arguments = new Class[1];
-
+        arguments[0] = extractorInterface.getClass();
 
         return cInterface
                 .getDeclaredConstructor(arguments)
-                .newInstance(null);
+                .newInstance(extractorInterface);
 
     }
 
