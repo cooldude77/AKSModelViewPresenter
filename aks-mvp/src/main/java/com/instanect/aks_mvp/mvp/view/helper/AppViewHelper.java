@@ -26,6 +26,7 @@ public class AppViewHelper implements AppViewHelperInterface{
         this.context = context;
     }
 
+    @Override
     public void setView(View view) {
         this.view = view;
     }

@@ -1,5 +1,6 @@
 package com.instanect.aks_mvp.mvp.view;
 
+import android.view.View;
 import android.widget.Button;
 
 import com.instanect.aks_mvp.mvp.view.interfaces.ViewInterface;
@@ -19,6 +20,9 @@ public class AbstractView implements ViewInterface {
         this.appViewHelperInterface = appViewHelperInterface;
     }
 
+    public void setView(View view) {
+        appViewHelperInterface.setView(view);
+    }
 
     public void setProgressBarId(int progressBarId) {
 

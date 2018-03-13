@@ -1,5 +1,6 @@
 package com.instanect.aks_mvp.mvp.view;
 
+import android.view.View;
 import android.widget.Button;
 
 /**
@@ -8,6 +9,8 @@ import android.widget.Button;
 
 public interface AppViewHelperInterface {
     Button findViewById(int resIdButton);
+
+    void setView(View view);
 
     String getStringFromEditText(int id);
 
