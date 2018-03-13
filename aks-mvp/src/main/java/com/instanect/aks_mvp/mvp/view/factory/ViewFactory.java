@@ -16,8 +16,7 @@ public class ViewFactory {
     public <T extends ViewInterface> ViewInterface
     getInstance(
             Class<? extends ViewInterface> T,
-            Context context,
-            View layoutView)
+            Context context)
             throws NoSuchMethodException,
             IllegalAccessException,
             InvocationTargetException,
@@ -26,7 +25,7 @@ public class ViewFactory {
         args[0] = AppViewHelper.class;
 
         return T.getDeclaredConstructor(args).newInstance(
-                new AppViewHelper(context, layoutView)
+                new AppViewHelper(context)
         );
     }
 }
