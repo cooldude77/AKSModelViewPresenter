@@ -43,26 +43,6 @@ public abstract class AbstractPresenter implements PresenterInterface,
         this.preferencesInteractor = preferencesInteractor;
         attachPresenterAsResponseToInteractors();
     }
-
-    public AbstractPresenter(AbstractExtractorInteractor extractorInteractor,
-                             AbstractNetworkInteractor networkInteractor) {
-        this(null, extractorInteractor, networkInteractor, null);
-    }
-
-    public AbstractPresenter(AbstractDatabaseInteractor databaseInteractor, AbstractPreferencesInteractor preferenceInteractor) {
-
-        this(databaseInteractor, null, null, null);
-    }
-
-    public AbstractPresenter(
-            AbstractAlertDialog alertDialogInteractor,
-            AbstractDatabaseInteractor databaseInteractor,
-            AbstractPreferencesInteractor preferenceInteractor) {
-
-        this(databaseInteractor, null, null, preferenceInteractor);
-    }
-
-
     @Override
     public void attachPresenterAsResponseToInteractors() {
 

@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import static junit.framework.Assert.assertNotNull;
+
 /**
  * Created by AKS on 12/26/2017.
  */
@@ -16,13 +18,15 @@ import android.widget.Toast;
 public class AppViewHelper {
 
     private final Context context;
-    private final View view;
+    private View view;
 
-    public AppViewHelper(Context context, View view) {
+    public AppViewHelper(Context context) {
         this.context = context;
-        this.view = view;
     }
 
+    public void setView(View view) {
+        this.view = view;
+    }
 
     /**
      * Generic function to get form control values
@@ -31,7 +35,7 @@ public class AppViewHelper {
      * @return String
      */
     public String getStringFromEditText(int id) {
-
+        assertNotNull(view);
         EditText editText = view.findViewById(id);
         return editText != null ? editText.getText().toString() : null;
     }
@@ -58,6 +62,7 @@ public class AppViewHelper {
 
 
     public void hideProgressIndicator(int progressBarResId) {
+        assertNotNull(view);
         ProgressBar progressBar = view.findViewById(progressBarResId);
         if (progressBar != null)
             progressBar.setVisibility(View.GONE);
@@ -66,6 +71,7 @@ public class AppViewHelper {
 
 
     public void showProgressIndicator(int progressBarResId) {
+        assertNotNull(view);
         ProgressBar progressBar = view.findViewById(progressBarResId);
         if (progressBar != null)
             progressBar.setVisibility(View.VISIBLE);
@@ -74,33 +80,37 @@ public class AppViewHelper {
 
 
     public void hideKeyBoard() {
-        // Check if no view has focus:
-        View view = ((AppCompatActivity) context).getCurrentFocus();
-        if (view != null) {
+        assertNotNull(view);
+        // Check if no currentFocus has focus:
+        View currentFocus = ((AppCompatActivity) context).getCurrentFocus();
+        if (currentFocus != null) {
             InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
             if (imm != null) {
-                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                imm.hideSoftInputFromWindow(currentFocus.getWindowToken(), 0);
             }
         }
     }
 
 
     public void showKeyBoard() {
-        // Check if no view has focus:
-        View view = ((AppCompatActivity) context).getCurrentFocus();
-        if (view != null) {
+        assertNotNull(view);
+        // Check if no currentFocus has focus:
+        View currentFocus = ((AppCompatActivity) context).getCurrentFocus();
+        if (currentFocus != null) {
             InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
             if (imm != null) {
-                imm.showSoftInput(view, 0);
+                imm.showSoftInput(currentFocus, 0);
             }
         }
     }
 
     public Button findViewById(int resIdButton) {
+        assertNotNull(view);
         return view.findViewById(resIdButton);
     }
 
     public String getStringFromResource(int stringResId) {
+        assertNotNull(view);
         return context.getResources().getString(stringResId);
     }
 }
