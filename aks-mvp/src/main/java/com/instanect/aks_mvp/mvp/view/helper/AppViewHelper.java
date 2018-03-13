@@ -9,13 +9,15 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.instanect.aks_mvp.mvp.view.AppViewHelperInterface;
+
 import static junit.framework.Assert.assertNotNull;
 
 /**
  * Created by AKS on 12/26/2017.
  */
 
-public class AppViewHelper {
+public class AppViewHelper implements AppViewHelperInterface{
 
     private final Context context;
     private View view;
@@ -60,6 +62,11 @@ public class AppViewHelper {
         toastShort(context.getResources().getString(resId));
     }
 
+    @Override
+    public Button findButton(int resIdButton) {
+        return null;
+    }
+
 
     public void hideProgressIndicator(int progressBarResId) {
         assertNotNull(view);
@@ -75,6 +82,16 @@ public class AppViewHelper {
         ProgressBar progressBar = view.findViewById(progressBarResId);
         if (progressBar != null)
             progressBar.setVisibility(View.VISIBLE);
+
+    }
+
+    @Override
+    public void hideProgressIndicator() {
+
+    }
+
+    @Override
+    public void showProgressIndicator() {
 
     }
 
