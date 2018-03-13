@@ -3,8 +3,8 @@ package com.instanect.aks_mvp.mvp.view.factory;
 import android.content.Context;
 import android.view.View;
 
-import com.instanect.mainapp.layers.business.mvp.view.helper.AppViewHelper;
-import com.instanect.mainapp.layers.business.mvp.view.interfaces.ViewInterface;
+import com.instanect.aks_mvp.mvp.view.helper.AppViewHelper;
+import com.instanect.aks_mvp.mvp.view.interfaces.ViewInterface;
 
 import java.lang.reflect.InvocationTargetException;
 
