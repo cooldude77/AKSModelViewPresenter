@@ -11,16 +11,10 @@ import java.lang.reflect.InvocationTargetException;
 
 public class NetworkInteractorBuilder {
 
-    private NetworkInterface networkInterface;
-
-    public NetworkInteractorBuilder(NetworkInterface networkInterface) {
-
-        this.networkInterface = networkInterface;
-    }
 
     public NetworkInteractorInterface getInstance(
-            Class<? extends NetworkInteractorInterface> cNetworkInteractorInterface
-    )
+            Class<? extends NetworkInteractorInterface> cNetworkInteractorInterface,
+            NetworkInterface networkInterface)
             throws
             NoSuchMethodException,
             IllegalAccessException,
