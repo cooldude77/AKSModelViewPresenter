@@ -20,7 +20,7 @@ public interface NetworkInteractorResponseInterface {
     void onInternetNotAvailable();
 
     // When additional Uri failed
-    void onAdditionUrlNotAvailable(String messageOnNotAvailable);
+    void onAdditionalUrlNotAvailable(String messageOnNotAvailable);
 
     void onNetworkCallAbort();
 }

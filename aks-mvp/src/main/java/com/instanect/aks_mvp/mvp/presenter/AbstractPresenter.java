@@ -1,6 +1,5 @@
 package com.instanect.aks_mvp.mvp.presenter;
 
-import com.instanect.aks_mvp.mvp.interactors.alert.AbstractAlertDialog;
 import com.instanect.aks_mvp.mvp.interactors.database.AbstractDatabaseInteractor;
 import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseInteractorResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseObjectInterface;
@@ -30,7 +29,6 @@ public abstract class AbstractPresenter implements PresenterInterface,
     protected final AbstractDatabaseInteractor databaseInteractor;
     protected final AbstractPreferencesInteractor preferencesInteractor;
     private PresenterResponseInterface presenterResponseInterface;
-    private ViewInterface view;
 
     public AbstractPresenter(
             AbstractDatabaseInteractor databaseInteractor,
@@ -43,6 +41,7 @@ public abstract class AbstractPresenter implements PresenterInterface,
         this.preferencesInteractor = preferencesInteractor;
         attachPresenterAsResponseToInteractors();
     }
+
     @Override
     public void attachPresenterAsResponseToInteractors() {
 
@@ -67,55 +66,61 @@ public abstract class AbstractPresenter implements PresenterInterface,
     }
 
 
-    public ViewInterface getView() {
-        return view;
-    }
-
     @Override
     public void onDatabaseInteractorProcessSuccess(DatabaseObjectInterface databaseObjectInterface) {
 
+        presenterResponseInterface.onDatabaseInteractorProcessSuccess(databaseObjectInterface);
     }
 
 
     @Override
     public void onPreferencesSaveSuccess() {
-
+        presenterResponseInterface.onPreferenceSaveSuccess();
     }
 
 
     @Override
     public void onNetworkInteractorScenarioCallFailure(String failureMessages, int errorCode) {
 
+        presenterResponseInterface.onNetworkInteractorScenarioCallFailure(failureMessages, errorCode);
     }
 
 
     @Override
     public void onInternetNotAvailable() {
+        presenterResponseInterface.onInternetNotAvailable();
+
     }
 
     @Override
-    public void onAdditionUrlNotAvailable(String messageOnNotAvailable) {
-         }
+    public void onAdditionalUrlNotAvailable(String messageOnNotAvailable) {
+        presenterResponseInterface.onAdditionalUrlNotAvailable(messageOnNotAvailable);
+    }
 
     @Override
     public void onNetworkCallAbort() {
-        getView().hideProgressIndicator();
+
+        presenterResponseInterface.onNetworkCallAbort();
     }
 
 
     @Override
     public void onExtractorSuccess(DatabaseObjectInterface databaseObjectInterface) {
 
+        presenterResponseInterface.onExtractorSuccess(databaseObjectInterface);
     }
 
     @Override
-    public <T> void onNetworkInteractorCallSuccessful(NetworkResponseInterface<T> tNetworkResponseInterface) {
+    public <T> void onNetworkInteractorCallSuccessful(
+            NetworkResponseInterface<T> networkResponseInterface) {
 
+        presenterResponseInterface.onNetworkInteractorCallSuccessful(networkResponseInterface);
     }
 
     @Override
     public void onDatabaseInteractorProcessFailure(String errorMessage) {
 
+        presenterResponseInterface.onDatabaseInteractorProcessFailure(errorMessage);
     }
 
 }

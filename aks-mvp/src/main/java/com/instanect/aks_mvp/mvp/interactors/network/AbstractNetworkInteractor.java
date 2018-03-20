@@ -43,7 +43,7 @@ abstract public class AbstractNetworkInteractor implements NetworkInteractorInte
     @Override
     public void onAdditionalUrlNotAvailable(String messageOnNotAvailable) {
         Assert.assertNotNull(networkInteractorResponseInterface);
-        networkInteractorResponseInterface.onAdditionUrlNotAvailable(messageOnNotAvailable);
+        networkInteractorResponseInterface.onAdditionalUrlNotAvailable(messageOnNotAvailable);
     }
 
     @Override
