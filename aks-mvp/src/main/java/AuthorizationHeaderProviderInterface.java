@@ -1,3 +1,5 @@
+package com.instanect.aks_mvp;
+
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.AuthorizationHeaderInterface;
 
 /**

@@ -10,9 +10,12 @@ import com.instanect.aks_mvp.mvp.interactors.network.AbstractNetworkInteractor;
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteractorResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.preferences.AbstractPreferencesInteractor;
 import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.PreferencesInteractorResponseInterface;
+import com.instanect.aks_mvp.mvp.presenter.interfaces.PresenterDatabaseResponseInterface;
+import com.instanect.aks_mvp.mvp.presenter.interfaces.PresenterExtractorResponseInterface;
 import com.instanect.aks_mvp.mvp.presenter.interfaces.PresenterInterface;
+import com.instanect.aks_mvp.mvp.presenter.interfaces.PresenterNetworkResponseInterface;
+import com.instanect.aks_mvp.mvp.presenter.interfaces.PresenterPreferencesResponseInterface;
 import com.instanect.aks_mvp.mvp.presenter.interfaces.PresenterResponseInterface;
-import com.instanect.aks_mvp.mvp.view.interfaces.ViewInterface;
 
 /**
  * Abs class to be extended by all presenters
@@ -28,7 +31,12 @@ public abstract class AbstractPresenter implements PresenterInterface,
     protected final AbstractExtractorInteractor extractorInteractor;
     protected final AbstractDatabaseInteractor databaseInteractor;
     protected final AbstractPreferencesInteractor preferencesInteractor;
+
     private PresenterResponseInterface presenterResponseInterface;
+    private PresenterDatabaseResponseInterface presenterDatabaseResponseInterface;
+    private PresenterExtractorResponseInterface presenterExtractorResponseInterface;
+    private PresenterNetworkResponseInterface presenterNetworkResponseInterface;
+    private PresenterPreferencesResponseInterface presenterPreferencesResponseInterface;
 
     public AbstractPresenter(
             AbstractDatabaseInteractor databaseInteractor,
@@ -59,6 +67,16 @@ public abstract class AbstractPresenter implements PresenterInterface,
     public void attachPresenterResponseInterface(PresenterResponseInterface presenterResponseInterface) {
 
         this.presenterResponseInterface = presenterResponseInterface;
+
+
+        if (networkInteractor != null)
+            this.presenterNetworkResponseInterface = (PresenterNetworkResponseInterface) presenterResponseInterface;
+        if (extractorInteractor != null)
+            this.presenterExtractorResponseInterface = (PresenterExtractorResponseInterface) presenterResponseInterface;
+        if (databaseInteractor != null)
+            this.presenterDatabaseResponseInterface = (PresenterDatabaseResponseInterface)presenterResponseInterface;
+        if (preferencesInteractor != null)
+            this.presenterPreferencesResponseInterface = (PresenterPreferencesResponseInterface)presenterResponseInterface;
     }
 
     public PresenterResponseInterface getPresenterResponseInterface() {
@@ -69,58 +87,58 @@ public abstract class AbstractPresenter implements PresenterInterface,
     @Override
     public void onDatabaseInteractorProcessSuccess(DatabaseObjectInterface databaseObjectInterface) {
 
-        presenterResponseInterface.onDatabaseInteractorProcessSuccess(databaseObjectInterface);
+        presenterDatabaseResponseInterface.onDatabaseInteractorProcessSuccess(databaseObjectInterface);
     }
 
 
     @Override
     public void onPreferencesSaveSuccess() {
-        presenterResponseInterface.onPreferenceSaveSuccess();
+        presenterPreferencesResponseInterface.onPreferenceSaveSuccess();
     }
 
 
     @Override
     public void onNetworkInteractorScenarioCallFailure(String failureMessages, int errorCode) {
 
-        presenterResponseInterface.onNetworkInteractorScenarioCallFailure(failureMessages, errorCode);
+        presenterNetworkResponseInterface.onNetworkInteractorScenarioCallFailure(failureMessages, errorCode);
     }
 
 
     @Override
     public void onInternetNotAvailable() {
-        presenterResponseInterface.onInternetNotAvailable();
+        presenterNetworkResponseInterface.onInternetNotAvailable();
 
     }
 
     @Override
     public void onAdditionalUrlNotAvailable(String messageOnNotAvailable) {
-        presenterResponseInterface.onAdditionalUrlNotAvailable(messageOnNotAvailable);
+        presenterNetworkResponseInterface.onAdditionalUrlNotAvailable(messageOnNotAvailable);
     }
 
     @Override
     public void onNetworkCallAbort() {
 
-        presenterResponseInterface.onNetworkCallAbort();
+        presenterNetworkResponseInterface.onNetworkCallAbort();
     }
 
 
     @Override
     public void onExtractorSuccess(DatabaseObjectInterface databaseObjectInterface) {
 
-        presenterResponseInterface.onExtractorSuccess(databaseObjectInterface);
+        presenterExtractorResponseInterface.onExtractorSuccess(databaseObjectInterface);
     }
 
     @Override
     public <T> void onNetworkInteractorCallSuccessful(
             NetworkResponseInterface<T> networkResponseInterface) {
 
-        presenterResponseInterface.onNetworkInteractorCallSuccessful(networkResponseInterface);
+        presenterNetworkResponseInterface.onNetworkInteractorCallSuccessful(networkResponseInterface);
     }
 
     @Override
     public void onDatabaseInteractorProcessFailure(String errorMessage) {
 
-        presenterResponseInterface.onDatabaseInteractorProcessFailure(errorMessage);
+        presenterDatabaseResponseInterface.onDatabaseInteractorProcessFailure(errorMessage);
     }
 
 }
