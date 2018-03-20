@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
  * Created by AKS on 3/14/2018.
  */
 
-public class TestAKSMVPActivity extends AppCompatActivity imp {
+public class TestAKSMVPActivity extends AppCompatActivity  {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
