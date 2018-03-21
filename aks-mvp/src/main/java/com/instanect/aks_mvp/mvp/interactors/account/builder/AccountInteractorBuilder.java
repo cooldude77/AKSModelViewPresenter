@@ -1,8 +1,9 @@
 package com.instanect.aks_mvp.mvp.interactors.account.builder;
 
-import com.instanect.aks_mvp.mvp.interactors.account.AbstractAccountInteractor;
-import com.instanect.aks_mvp.mvp.interactors.account.AppAccountManagerInterface;
 import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountCreateInterface;
+import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountInteractorInterface;
+import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountQueryInterface;
+import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountUpdateInterface;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -12,19 +13,25 @@ import java.lang.reflect.InvocationTargetException;
 
 public class AccountInteractorBuilder {
 
-    public AccountCreateInterface getInstance(
-            Class<? extends AbstractAccountInteractor> accountInteractorClass,
-            AppAccountManagerInterface appAccountManagerInterface)
+    public AccountInteractorInterface getInstance(
+            Class<? extends AccountInteractorInterface> accountInteractorClass,
+            AccountCreateInterface accountCreateInterface,
+            AccountUpdateInterface accountUpdateInterface,
+            AccountQueryInterface accountQueryInterface)
             throws NoSuchMethodException,
             IllegalAccessException, InvocationTargetException, InstantiationException {
 
-        Class[] arguments = new Class[1];
-        arguments[0] = appAccountManagerInterface.getClass();
+        Class[] arguments = new Class[3];
+        arguments[0] = accountCreateInterface.getClass();
+        arguments[1] = accountUpdateInterface.getClass();
+        arguments[2] = accountQueryInterface.getClass();
 
 
         return accountInteractorClass
                 .getDeclaredConstructor(arguments)
-                .newInstance(appAccountManagerInterface);
+                .newInstance(accountCreateInterface,
+                        accountUpdateInterface,
+                        accountQueryInterface);
 
     }
 }
