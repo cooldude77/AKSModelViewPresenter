@@ -1,4 +1,4 @@
-package com.instanect.aks_mvp.mvp.interactors.account;
+package com.instanect.aks_mvp.mvp.interactors.account.exception;
 
 /**
  * Created by AKS on 3/11/2018.

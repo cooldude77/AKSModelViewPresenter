@@ -5,7 +5,4 @@ package com.instanect.aks_mvp.mvp.interactors.account.interfaces;
  */
 
 public interface AccountInteractorResponseInterface {
-    void onAccountCreationSuccess();
-
-    void onAccountCreationFailure(String errorMessage);
 }

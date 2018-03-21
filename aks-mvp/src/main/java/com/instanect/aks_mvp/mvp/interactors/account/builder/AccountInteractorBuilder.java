@@ -1,10 +1,8 @@
 package com.instanect.aks_mvp.mvp.interactors.account.builder;
 
-import android.content.Context;
-
 import com.instanect.aks_mvp.mvp.interactors.account.AbstractAccountInteractor;
 import com.instanect.aks_mvp.mvp.interactors.account.AppAccountManagerInterface;
-import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountInteractorInterface;
+import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountCreateInterface;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -14,7 +12,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public class AccountInteractorBuilder {
 
-    public AccountInteractorInterface getInstance(
+    public AccountCreateInterface getInstance(
             Class<? extends AbstractAccountInteractor> accountInteractorClass,
             AppAccountManagerInterface appAccountManagerInterface)
             throws NoSuchMethodException,

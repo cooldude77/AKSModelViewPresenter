@@ -112,4 +112,5 @@ public abstract class AbstractPresenter implements PresenterInterface,
     public void onDatabaseInteractorProcessFailure(String errorMessage) {
     }
 
+
 }
