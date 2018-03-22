@@ -1,7 +1,7 @@
 package com.instanect.aks_mvp.mvp.interactors.network;
 
 
-import com.instanect.aks_mvp.mvp.interactors.extractor.NetworkResponseInterface;
+import com.instanect.accountcommon.network.NetworkResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkExecutionResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteractorResponseInterface;

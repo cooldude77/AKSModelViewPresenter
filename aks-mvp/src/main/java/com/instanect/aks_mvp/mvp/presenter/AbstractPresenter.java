@@ -1,11 +1,11 @@
 package com.instanect.aks_mvp.mvp.presenter;
 
+import com.instanect.accountcommon.network.NetworkResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.database.AbstractDatabaseInteractor;
 import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseInteractorResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseObjectInterface;
 import com.instanect.aks_mvp.mvp.interactors.extractor.AbstractExtractorInteractor;
 import com.instanect.aks_mvp.mvp.interactors.extractor.ExtractorInteractorResponseInterface;
-import com.instanect.aks_mvp.mvp.interactors.extractor.NetworkResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.network.AbstractNetworkInteractor;
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteractorResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.preferences.AbstractPreferencesInteractor;
