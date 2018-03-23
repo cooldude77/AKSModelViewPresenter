@@ -12,7 +12,7 @@ import com.instanect.aks_mvp.mvp.view.interfaces.ViewInterface;
  */
 
 public class AbstractAccountPresenter extends AbstractPresenter {
-    private final AbstractAccountInteractor abstractAccountInteractorAccountInteractor;
+    protected final AbstractAccountInteractor abstractAccountInteractorAccountInteractor;
 
     public AbstractAccountPresenter(
             AbstractAccountInteractor abstractAccountInteractorAccountInteractor,
