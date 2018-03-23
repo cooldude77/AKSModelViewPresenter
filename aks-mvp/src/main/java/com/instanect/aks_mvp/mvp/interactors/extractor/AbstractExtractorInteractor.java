@@ -1,6 +1,10 @@
 package com.instanect.aks_mvp.mvp.interactors.extractor;
 
 
+import com.instanect.accountcommon.network.NetworkResponseInterface;
+
+import org.json.JSONObject;
+
 /**
  * Created by AKS on 10/9/2017.
  */
@@ -16,5 +20,10 @@ abstract public class AbstractExtractorInteractor implements ExtractorInteractor
     @Override
     public void setExtractorInteractorResponseInterface(ExtractorInteractorResponseInterface extractorInteractorResponseInterface) {
         this.extractorInteractorResponseInterface = extractorInteractorResponseInterface;
+    }
+
+    @Override
+    public void extract(NetworkResponseInterface<JSONObject> networkResponse) {
+
     }
 }

@@ -9,4 +9,5 @@ import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseObjectI
 public interface ExtractorInteractorResponseInterface {
 
     void onExtractorSuccess(DatabaseObjectInterface databaseObjectInterface);
+    <T> void onExtractorFailure(T t);
 }
