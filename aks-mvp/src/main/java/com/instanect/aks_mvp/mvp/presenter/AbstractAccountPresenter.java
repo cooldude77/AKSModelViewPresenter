@@ -12,16 +12,16 @@ import com.instanect.aks_mvp.mvp.view.interfaces.ViewInterface;
  */
 
 public class AbstractAccountPresenter extends AbstractPresenter {
-    protected final AbstractAccountInteractor abstractAccountInteractorAccountInteractor;
+    protected final AbstractAccountInteractor accountInteractor;
 
     public AbstractAccountPresenter(
-            AbstractAccountInteractor abstractAccountInteractorAccountInteractor,
+            AbstractAccountInteractor accountInteractor,
             AbstractDatabaseInteractor databaseInteractor,
             AbstractExtractorInteractor extractorInteractor,
             AbstractNetworkInteractor networkInteractor,
             AbstractPreferencesInteractor preferencesInteractor) {
         super(databaseInteractor, extractorInteractor, networkInteractor, preferencesInteractor);
-        this.abstractAccountInteractorAccountInteractor = abstractAccountInteractorAccountInteractor;
+        this.accountInteractor = accountInteractor;
     }
 
     @Override
