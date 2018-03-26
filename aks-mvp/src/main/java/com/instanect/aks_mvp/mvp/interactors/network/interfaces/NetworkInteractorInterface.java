@@ -1,7 +1,8 @@
 package com.instanect.aks_mvp.mvp.interactors.network.interfaces;
 
-import com.instanect.accountcommon.AuthorizationHeaderInterface;
-import com.instanect.accountcommon.network.NetworkResponseInterface;
+
+import com.instanect.accountcommon.account.authorization.AuthorizationHeaderInterface;
+import com.instanect.networkcommon.NetworkResponseInterface;
 
 import java.util.HashMap;
 

@@ -1,7 +1,7 @@
 package com.instanect.aks_mvp.mvp.interactors.extractor;
 
 
-import com.instanect.accountcommon.network.NetworkResponseInterface;
+import com.instanect.networkcommon.NetworkResponseInterface;
 
 import org.json.JSONObject;
 

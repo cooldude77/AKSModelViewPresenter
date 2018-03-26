@@ -1,11 +1,11 @@
 package com.instanect.aks_mvp.mvp.interactors.network;
 
 
-import com.instanect.accountcommon.network.NetworkResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkExecutionResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteractorResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInterface;
+import com.instanect.networkcommon.NetworkResponseInterface;
 
 import junit.framework.Assert;
 

@@ -1,6 +1,6 @@
 package com.instanect.aks_mvp.mvp.interactors.network.interfaces;
 
-import com.instanect.accountcommon.network.NetworkResponseInterface;
+import com.instanect.networkcommon.NetworkResponseInterface;
 
 /**
  * Created by AKS on 10/6/2017.

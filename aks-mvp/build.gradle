@@ -6,8 +6,8 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 27
-        versionCode 23
-        versionName "0.0.23"
+        versionCode 26
+        versionName "0.0.26"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -38,7 +38,7 @@ ext {
     siteUrl = 'https://github.com/cooldude77/AKSModelViewPresenter'
     gitUrl = 'https://github.com/cooldude77/AKSModelViewPresenter.git'
 
-    libraryVersion = '0.0.23'
+    libraryVersion = '0.0.26'
 
     developerId = 'cooldude77'
     developerName = 'Ashvini'
@@ -57,7 +57,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.1'
     implementation 'com.android.support:appcompat-v7:27.1.0'
 
-    implementation 'com.instanect.accountcommon:accountcommon:0.0.4'
+    implementation 'com.instanect.accountcommon:accountcommon:0.0.9'
+    implementation 'com.instanect.networkcommon:networkcommon:0.0.2'
     // Dagger
     implementation 'com.google.dagger:dagger:2.12'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.12'

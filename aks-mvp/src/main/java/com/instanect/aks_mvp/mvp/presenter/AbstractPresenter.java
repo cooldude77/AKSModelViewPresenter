@@ -1,6 +1,5 @@
 package com.instanect.aks_mvp.mvp.presenter;
 
-import com.instanect.accountcommon.network.NetworkResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.database.AbstractDatabaseInteractor;
 import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseInteractorResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseObjectInterface;
@@ -12,6 +11,7 @@ import com.instanect.aks_mvp.mvp.interactors.preferences.AbstractPreferencesInte
 import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.PreferencesInteractorResponseInterface;
 import com.instanect.aks_mvp.mvp.presenter.interfaces.PresenterInterface;
 import com.instanect.aks_mvp.mvp.presenter.interfaces.PresenterResponseInterface;
+import com.instanect.networkcommon.NetworkResponseInterface;
 
 /**
  * Abs class to be extended by all presenters
