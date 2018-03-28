@@ -27,7 +27,7 @@ import dagger.Provides;
 public class AppModule {
 
     @Provides
-    MVPPresenter provideMVPPresenter() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    MVPPresenter provideMVPPresenter() {
 
         AccountInteractor accountInteractor
                 = new AccountInteractor(
@@ -55,14 +55,25 @@ public class AppModule {
                 = new PreferencesInteractor(new Preferences());
 
 
-        return (MVPPresenter) new PresenterBuilder()
-                .setAccountInteractorInterface(accountInteractor)
-                .setDatabaseInteractorInterface(databaseInteractor)
-                .setExtractorInteractorInterface(extractorInteractor)
-                .setNetworkInteractorInterface(networkInteractor)
-                .setPreferencesInteractorInterface(preferencesInteractor)
-                .build();
+        try {
+            return (MVPPresenter) new PresenterBuilder()
+                    .setAccountInteractorInterface(accountInteractor)
+                    .setDatabaseInteractorInterface(databaseInteractor)
+                    .setExtractorInteractorInterface(extractorInteractor)
+                    .setNetworkInteractorInterface(networkInteractor)
+                    .setPreferencesInteractorInterface(preferencesInteractor)
+                    .build();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        }
 
+        return null;
 
     }
 

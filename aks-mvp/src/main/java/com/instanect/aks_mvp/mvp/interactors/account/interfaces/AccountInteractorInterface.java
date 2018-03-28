@@ -6,6 +6,4 @@ package com.instanect.aks_mvp.mvp.interactors.account.interfaces;
 
 public interface AccountInteractorInterface {
 
-    void setAccountInteractorResponseInterface(
-            AccountInteractorResponseInterface accountInteractorResponseInterface);
 }

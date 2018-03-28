@@ -68,4 +68,6 @@ public abstract class AbstractAccountInteractor implements AccountInteractorInte
     public void setAccountQueryResponseInterface(AccountQueryResponseInterface accountQueryResponseInterface) {
         this.accountQueryResponseInterface = accountQueryResponseInterface;
     }
+
+
 }
