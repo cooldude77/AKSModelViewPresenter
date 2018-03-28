@@ -57,6 +57,7 @@ public class AppModule {
 
         try {
             return (MVPPresenter) new PresenterBuilder()
+                    .setPresenterClass(MVPPresenter.class)
                     .setAccountInteractorInterface(accountInteractor)
                     .setDatabaseInteractorInterface(databaseInteractor)
                     .setExtractorInteractorInterface(extractorInteractor)

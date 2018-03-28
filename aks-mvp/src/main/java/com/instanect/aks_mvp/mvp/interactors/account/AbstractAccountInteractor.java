@@ -49,22 +49,25 @@ public abstract class AbstractAccountInteractor implements AccountInteractorInte
         return accountCreateResponseInterface;
     }
 
+    @Override
+    public void setAccountCreateResponseInterface(AccountCreateResponseInterface accountCreateResponseInterface) {
+        this.accountCreateResponseInterface = accountCreateResponseInterface;
+    }
+
     public AccountUpdateResponseInterface getAccountUpdateResponseInterface() {
         return accountUpdateResponseInterface;
+    }
+
+    @Override
+    public void setAccountUpdateResponseInterface(AccountUpdateResponseInterface accountUpdateResponseInterface) {
+        this.accountUpdateResponseInterface = accountUpdateResponseInterface;
     }
 
     public AccountQueryResponseInterface getAccountQueryResponseInterface() {
         return accountQueryResponseInterface;
     }
 
-    public void setAccountCreateResponseInterface(AccountCreateResponseInterface accountCreateResponseInterface) {
-        this.accountCreateResponseInterface = accountCreateResponseInterface;
-    }
-
-    public void setAccountUpdateResponseInterface(AccountUpdateResponseInterface accountUpdateResponseInterface) {
-        this.accountUpdateResponseInterface = accountUpdateResponseInterface;
-    }
-
+    @Override
     public void setAccountQueryResponseInterface(AccountQueryResponseInterface accountQueryResponseInterface) {
         this.accountQueryResponseInterface = accountQueryResponseInterface;
     }

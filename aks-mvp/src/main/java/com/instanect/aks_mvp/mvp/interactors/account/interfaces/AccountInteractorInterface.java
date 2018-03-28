@@ -6,4 +6,9 @@ package com.instanect.aks_mvp.mvp.interactors.account.interfaces;
 
 public interface AccountInteractorInterface {
 
+    void setAccountCreateResponseInterface(AccountCreateResponseInterface accountCreateResponseInterface);
+
+    void setAccountUpdateResponseInterface(AccountUpdateResponseInterface accountUpdateResponseInterface);
+
+    void setAccountQueryResponseInterface(AccountQueryResponseInterface accountQueryResponseInterface);
 }

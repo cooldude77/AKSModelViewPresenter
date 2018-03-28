@@ -1,10 +1,9 @@
 package com.instanect.aks_mvp.mvp.presenter;
 
-import android.util.Log;
-
 import com.instanect.aks_mvp.LogTagGenerator;
+import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountCreateResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountInteractorInterface;
-import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountInteractorResponseInterface;
+import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountUpdateResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseInteractorResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.extractor.ExtractorInteractorInterface;
@@ -68,24 +67,65 @@ public class PresenterBuilder {
             InstantiationException {
 
 
-        Class[] arguments = new Class[5];
+        if (cPresenterInterface == null)
+            throw new IllegalArgumentException("Presenter class is null");
 
-        arguments[0] = accountInteractorInterface.getClass();
-        arguments[1] = databaseInteractorInterface.getClass();
-        arguments[2] = extractorInteractorInterface.getClass();
-        arguments[3] = networkInteractorInterface.getClass();
-        arguments[4] = preferencesInteractorInterface.getClass();
+        PresenterInterface presenterInterface = cPresenterInterface
+                .newInstance();
 
+        setInteractors(presenterInterface);
+        setPresenterAsResponseToInteractors(presenterInterface);
+        return presenterInterface;
+    }
 
-        return cPresenterInterface
-                .getDeclaredConstructor(arguments)
-                .newInstance(
-                        accountInteractorInterface,
-                        databaseInteractorInterface,
-                        extractorInteractorInterface,
-                        networkInteractorInterface,
-                        preferencesInteractorInterface);
+    private void setPresenterAsResponseToInteractors(PresenterInterface presenterInterface) {
 
+        if (accountInteractorInterface != null) {
+
+            accountInteractorInterface.setAccountCreateResponseInterface(
+                    (AccountCreateResponseInterface) presenterInterface);
+
+            accountInteractorInterface.setAccountUpdateResponseInterface(
+                    (AccountUpdateResponseInterface) presenterInterface
+            );
+
+            accountInteractorInterface.setAccountUpdateResponseInterface(
+                    (AccountUpdateResponseInterface) presenterInterface
+            );
+        }
+        if (databaseInteractorInterface != null) {
+            databaseInteractorInterface.setDatabaseInteractorResponseInterface(
+                    (DatabaseInteractorResponseInterface) presenterInterface);
+        }
+
+        if (extractorInteractorInterface != null) {
+            extractorInteractorInterface.setExtractorInteractorResponseInterface(
+                    (ExtractorInteractorResponseInterface) presenterInterface);
+        }
+        if (networkInteractorInterface != null) {
+            networkInteractorInterface.setNetworkInteractorResponseInterface(
+                    (NetworkInteractorResponseInterface) presenterInterface);
+        }
+
+        if (preferencesInteractorInterface != null) {
+            preferencesInteractorInterface.setPreferencesInteractorResponseInterface(
+                    (PreferencesInteractorResponseInterface) presenterInterface);
+        }
+
+    }
+
+    private void setInteractors(PresenterInterface presenterInterface) {
+
+        if (accountInteractorInterface != null)
+            presenterInterface.setAccountInteractorInterface(accountInteractorInterface);
+        if (databaseInteractorInterface != null)
+            presenterInterface.setDatabaseInteractorInterface(databaseInteractorInterface);
+        if (extractorInteractorInterface != null)
+            presenterInterface.setExtractorInteractorInterface(extractorInteractorInterface);
+        if (networkInteractorInterface != null)
+            presenterInterface.setNetworkInteractorInterface(networkInteractorInterface);
+        if (preferencesInteractorInterface != null)
+            presenterInterface.setPreferencesInteractorInterface(preferencesInteractorInterface);
 
     }
 }
