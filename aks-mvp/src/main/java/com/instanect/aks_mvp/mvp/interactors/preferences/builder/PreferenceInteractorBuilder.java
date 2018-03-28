@@ -1,7 +1,7 @@
 package com.instanect.aks_mvp.mvp.interactors.preferences.builder;
 
 import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.AppPreferencesInterface;
-import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.PreferenceInteractorInterface;
+import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.PreferencesInteractorInterface;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -11,8 +11,8 @@ import java.lang.reflect.InvocationTargetException;
 
 public class PreferenceInteractorBuilder {
 
-    public <T> PreferenceInteractorInterface getInstance(
-            Class<? extends PreferenceInteractorInterface> classInteractor,
+    public <T> PreferencesInteractorInterface getInstance(
+            Class<? extends PreferencesInteractorInterface> classInteractor,
             AppPreferencesInterface appPreferencesInterface)
             throws NoSuchMethodException,
             IllegalAccessException,

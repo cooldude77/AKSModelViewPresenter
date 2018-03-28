@@ -1,59 +1,50 @@
 package com.instanect.aks_mvp.mvp.presenter;
 
-import com.instanect.aks_mvp.mvp.interactors.database.AbstractDatabaseInteractor;
+import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountInteractorInterface;
+import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountInteractorResponseInterface;
+import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseInteractorResponseInterface;
-import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseObjectInterface;
-import com.instanect.aks_mvp.mvp.interactors.extractor.AbstractExtractorInteractor;
+import com.instanect.aks_mvp.mvp.interactors.extractor.ExtractorInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.extractor.ExtractorInteractorResponseInterface;
-import com.instanect.aks_mvp.mvp.interactors.network.AbstractNetworkInteractor;
+import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteractorResponseInterface;
-import com.instanect.aks_mvp.mvp.interactors.preferences.AbstractPreferencesInteractor;
+import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.PreferencesInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.PreferencesInteractorResponseInterface;
 import com.instanect.aks_mvp.mvp.presenter.interfaces.PresenterInterface;
 import com.instanect.aks_mvp.mvp.presenter.interfaces.PresenterResponseInterface;
-import com.instanect.networkcommon.NetworkResponseInterface;
 
 /**
  * Abs class to be extended by all presenters
  */
 
-public abstract class AbstractPresenter implements PresenterInterface,
-        NetworkInteractorResponseInterface,
-        ExtractorInteractorResponseInterface,
-        DatabaseInteractorResponseInterface,
-        PreferencesInteractorResponseInterface {
+public abstract class AbstractPresenter implements PresenterInterface {
 
-    protected final AbstractNetworkInteractor networkInteractor;
-    protected final AbstractExtractorInteractor extractorInteractor;
-    protected final AbstractDatabaseInteractor databaseInteractor;
-    protected final AbstractPreferencesInteractor preferencesInteractor;
 
+    private  AccountInteractorInterface accountInteractorInterface;
+    private  DatabaseInteractorInterface databaseInteractorInterface;
+    private  ExtractorInteractorInterface extractorInteractorInterface;
+    private  NetworkInteractorInterface networkInteractorInterface;
+    private  PreferencesInteractorInterface preferencesInteractorInterface;
     private PresenterResponseInterface presenterResponseInterface;
 
+    public AbstractPresenter(){
+        
+    }
     public AbstractPresenter(
-            AbstractDatabaseInteractor databaseInteractor,
-            AbstractExtractorInteractor extractorInteractor,
-            AbstractNetworkInteractor networkInteractor,
-            AbstractPreferencesInteractor preferencesInteractor) {
-        this.networkInteractor = networkInteractor;
-        this.extractorInteractor = extractorInteractor;
-        this.databaseInteractor = databaseInteractor;
-        this.preferencesInteractor = preferencesInteractor;
-        attachPresenterAsResponseToInteractors();
+            AccountInteractorInterface accountInteractorInterface,
+            DatabaseInteractorInterface databaseInteractorInterface,
+            ExtractorInteractorInterface extractorInteractorInterface,
+            NetworkInteractorInterface networkInteractorInterface,
+            PreferencesInteractorInterface preferencesInteractorInterface) {
+
+        this.accountInteractorInterface = accountInteractorInterface;
+        this.databaseInteractorInterface = databaseInteractorInterface;
+        this.extractorInteractorInterface = extractorInteractorInterface;
+        this.networkInteractorInterface = networkInteractorInterface;
+        this.preferencesInteractorInterface = preferencesInteractorInterface;
+
     }
 
-    @Override
-    public void attachPresenterAsResponseToInteractors() {
-
-        if (networkInteractor != null)
-            networkInteractor.setNetworkInteractorResponseInterface(this);
-        if (extractorInteractor != null)
-            extractorInteractor.setExtractorInteractorResponseInterface(this);
-        if (databaseInteractor != null)
-            databaseInteractor.setDatabaseInteractorResponseInterface(this);
-        if (preferencesInteractor != null)
-            preferencesInteractor.setPreferencesInteractorResponseInterface(this);
-    }
 
     @Override
     public void attachPresenterResponseInterface(PresenterResponseInterface presenterResponseInterface) {
@@ -65,55 +56,24 @@ public abstract class AbstractPresenter implements PresenterInterface,
         return presenterResponseInterface;
     }
 
-
-    @Override
-    public void onDatabaseInteractorProcessSuccess(DatabaseObjectInterface databaseObjectInterface) {
-
+    public AccountInteractorInterface getAccountInteractorInterface() {
+        return accountInteractorInterface;
     }
 
-
-    @Override
-    public void onPreferencesSaveSuccess() {
+    public DatabaseInteractorInterface getDatabaseInteractorInterface() {
+        return databaseInteractorInterface;
     }
 
-
-    @Override
-    public void onNetworkInteractorScenarioCallFailure(String failureMessages, int errorCode) {
+    public ExtractorInteractorInterface getExtractorInteractorInterface() {
+        return extractorInteractorInterface;
     }
 
-
-    @Override
-    public void onInternetNotAvailable() {
-
+    public NetworkInteractorInterface getNetworkInteractorInterface() {
+        return networkInteractorInterface;
     }
 
-    @Override
-    public void onAdditionalUrlNotAvailable(String messageOnNotAvailable) {
+    public PreferencesInteractorInterface getPreferencesInteractorInterface() {
+        return preferencesInteractorInterface;
     }
 
-    @Override
-    public void onNetworkCallAbort() {
-
-    }
-
-
-    @Override
-    public void onExtractorSuccess(DatabaseObjectInterface databaseObjectInterface) {
-
-    }
-
-    @Override
-    public <T> void onNetworkInteractorCallSuccessful(
-            NetworkResponseInterface<T> networkResponseInterface) {
-
-    }
-
-    @Override
-    public void onDatabaseInteractorProcessFailure(String errorMessage) {
-    }
-
-    @Override
-    public <T> void onExtractorFailure(T t) {
-
-    }
 }

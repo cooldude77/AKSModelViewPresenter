@@ -4,7 +4,7 @@ package com.instanect.aks_mvp.mvp.interactors.network;
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkExecutionResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteractorResponseInterface;
-import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInterface;
+import com.instanect.networkcommon.NetworkInterface;
 import com.instanect.networkcommon.NetworkResponseInterface;
 
 import junit.framework.Assert;
@@ -15,12 +15,20 @@ import junit.framework.Assert;
 
 abstract public class AbstractNetworkInteractor implements NetworkInteractorInterface,
         NetworkExecutionResponseInterface {
-    protected final NetworkInterface networkInterface;
+    private NetworkInterface networkInterface;
 
-    protected NetworkInteractorResponseInterface networkInteractorResponseInterface;
+    private NetworkInteractorResponseInterface networkInteractorResponseInterface;
 
     public AbstractNetworkInteractor(NetworkInterface networkInterface) {
         this.networkInterface = networkInterface;
+    }
+
+    public NetworkInterface getNetworkInterface() {
+        return networkInterface;
+    }
+
+    public NetworkInteractorResponseInterface getNetworkInteractorResponseInterface() {
+        return networkInteractorResponseInterface;
     }
 
     @Override
@@ -55,13 +63,6 @@ abstract public class AbstractNetworkInteractor implements NetworkInteractorInte
     public <T> void onSuccess(NetworkResponseInterface<T> networkResponse) {
         Assert.assertNotNull(networkInteractorResponseInterface);
         networkInteractorResponseInterface.onNetworkInteractorCallSuccessful(networkResponse);
-    }
-
-
-    public void tryAbort() {
-
-        networkInterface.tryAbort();
-
     }
 
 

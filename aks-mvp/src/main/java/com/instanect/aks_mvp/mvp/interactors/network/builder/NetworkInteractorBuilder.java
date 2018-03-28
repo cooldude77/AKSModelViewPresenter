@@ -1,7 +1,7 @@
 package com.instanect.aks_mvp.mvp.interactors.network.builder;
 
-import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInterface;
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteractorInterface;
+import com.instanect.networkcommon.NetworkInterface;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -22,7 +22,7 @@ public class NetworkInteractorBuilder {
             InstantiationException {
 
         Class[] arguments = new Class[1];
-        arguments[0] = NetworkInterface.class;
+        arguments[0] = networkInterface.getClass();
 
 
         return cNetworkInteractorInterface
