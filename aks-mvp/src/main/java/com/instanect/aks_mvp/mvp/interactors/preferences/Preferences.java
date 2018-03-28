@@ -4,18 +4,18 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
-import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.AppPreferencesInterface;
+import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.PreferencesInterface;
 
 /**
  * Created by AKS on 11/9/2017.
  */
 
-public class AppPreferences extends AppPreferencesInterface {
+public class Preferences implements PreferencesInterface {
 
     protected final Context context;
     protected final Gson gson;
 
-    public AppPreferences(Context context, Gson gson) {
+    public Preferences(Context context, Gson gson) {
 
         this.context = context;
         this.gson = gson;

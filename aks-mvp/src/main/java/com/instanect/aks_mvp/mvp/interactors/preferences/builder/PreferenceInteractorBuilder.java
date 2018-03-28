@@ -1,6 +1,6 @@
 package com.instanect.aks_mvp.mvp.interactors.preferences.builder;
 
-import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.AppPreferencesInterface;
+import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.PreferencesInterface;
 import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.PreferencesInteractorInterface;
 
 import java.lang.reflect.InvocationTargetException;
@@ -13,7 +13,7 @@ public class PreferenceInteractorBuilder {
 
     public <T> PreferencesInteractorInterface getInstance(
             Class<? extends PreferencesInteractorInterface> classInteractor,
-            AppPreferencesInterface appPreferencesInterface)
+            PreferencesInterface preferencesInterface)
             throws NoSuchMethodException,
             IllegalAccessException,
             InvocationTargetException,
@@ -21,10 +21,10 @@ public class PreferenceInteractorBuilder {
 
         // now create interactor
         Class[] arguments = new Class[1];
-        arguments[0] = appPreferencesInterface.getClass();
+        arguments[0] = preferencesInterface.getClass();
 
         return classInteractor
                 .getDeclaredConstructor(arguments)
-                .newInstance(appPreferencesInterface);
+                .newInstance(preferencesInterface);
     }
 }

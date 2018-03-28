@@ -1,7 +1,7 @@
 package com.instanect.aks_mvp.mvp.interactors.preferences;
 
 
-import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.AppPreferencesInterface;
+import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.PreferencesInterface;
 import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.PreferencesInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.PreferencesInteractorResponseInterface;
 
@@ -12,13 +12,13 @@ import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.PreferencesI
 abstract public class AbstractPreferencesInteractor implements PreferencesInteractorInterface {
 
 
-    protected AppPreferencesInterface appPreferencesInterface;
+    protected PreferencesInterface preferencesInterface;
     protected PreferencesInteractorResponseInterface preferencesInteractorResponseInterface;
 
-    public AbstractPreferencesInteractor(AppPreferencesInterface appPreferencesInterface) {
+    public AbstractPreferencesInteractor(PreferencesInterface preferencesInterface) {
 
 
-        this.appPreferencesInterface = appPreferencesInterface;
+        this.preferencesInterface = preferencesInterface;
     }
 
     @Override
