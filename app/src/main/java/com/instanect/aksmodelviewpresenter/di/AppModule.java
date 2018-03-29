@@ -1,9 +1,6 @@
 package com.instanect.aksmodelviewpresenter.di;
 
 import com.instanect.aks_mvp.mvp.presenter.PresenterBuilder;
-import com.instanect.aksmodelviewpresenter.classes.AccountCreate;
-import com.instanect.aksmodelviewpresenter.classes.AccountQuery;
-import com.instanect.aksmodelviewpresenter.classes.AccountUpdaate;
 import com.instanect.aksmodelviewpresenter.classes.DatabaseApi;
 import com.instanect.aksmodelviewpresenter.classes.Extractor;
 import com.instanect.aksmodelviewpresenter.classes.NetworkApi;
@@ -30,11 +27,7 @@ public class AppModule {
     MVPPresenter provideMVPPresenter() {
 
         AccountInteractor accountInteractor
-                = new AccountInteractor(
-                new AccountCreate(),
-                new AccountUpdaate(),
-                new AccountQuery()
-        );
+                = new AccountInteractor();
 
         DatabaseInteractor databaseInteractor
                 = new DatabaseInteractor(

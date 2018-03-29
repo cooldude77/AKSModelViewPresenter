@@ -1,10 +1,10 @@
 package com.instanect.aks_mvp.mvp.presenter;
 
+import com.instanect.accountcommon.account.account.operations.interfaces.response.AccountCreateResponseInterface;
+import com.instanect.accountcommon.account.account.operations.interfaces.response.AccountQueryResponseInterface;
+import com.instanect.accountcommon.account.account.operations.interfaces.response.AccountUpdateResponseInterface;
 import com.instanect.aks_mvp.LogTagGenerator;
 import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountInteractorInterface;
-import com.instanect.aks_mvp.mvp.interactors.account.interfaces.response.AccountCreateResponseInterface;
-import com.instanect.aks_mvp.mvp.interactors.account.interfaces.response.AccountQueryResponseInterface;
-import com.instanect.aks_mvp.mvp.interactors.account.interfaces.response.AccountUpdateResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseInteractorResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.extractor.ExtractorInteractorInterface;
