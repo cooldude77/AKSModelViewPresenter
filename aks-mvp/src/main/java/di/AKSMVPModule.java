@@ -3,6 +3,8 @@ package di;
 import android.content.Context;
 
 import com.google.gson.Gson;
+import com.instanect.aks_mvp.mvp.alert.AlertDialogBuilderProvider;
+import com.instanect.aks_mvp.mvp.alert.GenericAlertDialogBuilder;
 import com.instanect.aks_mvp.mvp.helpers.PreferencesHelper;
 import com.instanect.aks_mvp.mvp.interactors.account.builder.AccountInteractorBuilder;
 import com.instanect.aks_mvp.mvp.interactors.database.builder.DatabaseInteractorBuilder;
@@ -61,5 +63,11 @@ public class AKSMVPModule {
     PreferencesHelper providePreferencesHelper() {
         return new PreferencesHelper(context, new Gson());
     }
+
+    @Provides
+    GenericAlertDialogBuilder provideGenericAlertDialogBuilder() {
+        return new GenericAlertDialogBuilder(new AlertDialogBuilderProvider());
+    }
+
 
 }
