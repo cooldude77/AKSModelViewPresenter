@@ -1,5 +1,9 @@
 package di;
 
+import android.content.Context;
+
+import com.google.gson.Gson;
+import com.instanect.aks_mvp.mvp.helpers.PreferencesHelper;
 import com.instanect.aks_mvp.mvp.interactors.account.builder.AccountInteractorBuilder;
 import com.instanect.aks_mvp.mvp.interactors.database.builder.DatabaseInteractorBuilder;
 import com.instanect.aks_mvp.mvp.interactors.extractor.ExtractorInteractorBuilder;
@@ -15,6 +19,12 @@ import dagger.Provides;
  */
 @Module
 public class AKSMVPModule {
+
+    private Context context;
+
+    public AKSMVPModule(Context context) {
+        this.context = context;
+    }
 
     @Provides
     public AccountInteractorBuilder provideAccountInteractorBuilder() {
@@ -47,5 +57,9 @@ public class AKSMVPModule {
         return new ViewFactory();
     }
 
+    @Provides
+    PreferencesHelper providePreferencesHelper() {
+        return new PreferencesHelper(context, new Gson());
+    }
 
 }
