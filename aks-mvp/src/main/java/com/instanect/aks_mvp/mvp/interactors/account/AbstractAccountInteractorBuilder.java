@@ -1,12 +1,12 @@
 package com.instanect.aks_mvp.mvp.interactors.account;
 
 import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountCreateInterface;
-import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountCreateResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountQueryInterface;
-import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountQueryResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountUpdateInterface;
-import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountUpdateResponseInterface;
+import com.instanect.aks_mvp.mvp.interactors.account.interfaces.response.AccountCreateResponseInterface;
+import com.instanect.aks_mvp.mvp.interactors.account.interfaces.response.AccountQueryResponseInterface;
+import com.instanect.aks_mvp.mvp.interactors.account.interfaces.response.AccountUpdateResponseInterface;
 
 import java.lang.reflect.InvocationTargetException;
 

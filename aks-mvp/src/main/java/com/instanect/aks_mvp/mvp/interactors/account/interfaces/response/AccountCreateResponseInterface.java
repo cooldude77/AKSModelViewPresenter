@@ -1,4 +1,4 @@
-package com.instanect.aks_mvp.mvp.interactors.account.interfaces;
+package com.instanect.aks_mvp.mvp.interactors.account.interfaces.response;
 
 import com.instanect.aks_mvp.mvp.presenter.InteractorResponseInterface;
 

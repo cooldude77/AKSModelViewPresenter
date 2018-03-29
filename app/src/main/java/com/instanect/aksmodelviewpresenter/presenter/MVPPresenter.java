@@ -1,8 +1,8 @@
 package com.instanect.aksmodelviewpresenter.presenter;
 
-import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountCreateResponseInterface;
-import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountQueryResponseInterface;
-import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountUpdateResponseInterface;
+import com.instanect.aks_mvp.mvp.interactors.account.interfaces.response.AccountCreateResponseInterface;
+import com.instanect.aks_mvp.mvp.interactors.account.interfaces.response.AccountQueryResponseInterface;
+import com.instanect.aks_mvp.mvp.interactors.account.interfaces.response.AccountUpdateResponseInterface;
 import com.instanect.aks_mvp.mvp.presenter.AbstractPresenter;
 
 /**

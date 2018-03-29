@@ -1,5 +1,9 @@
 package com.instanect.aks_mvp.mvp.interactors.account.interfaces;
 
+import com.instanect.aks_mvp.mvp.interactors.account.interfaces.response.AccountCreateResponseInterface;
+import com.instanect.aks_mvp.mvp.interactors.account.interfaces.response.AccountQueryResponseInterface;
+import com.instanect.aks_mvp.mvp.interactors.account.interfaces.response.AccountUpdateResponseInterface;
+
 /**
  * Created by AKS on 10/26/2017.
  */
