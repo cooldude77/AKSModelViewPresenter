@@ -7,6 +7,8 @@ import android.os.Parcelable;
 import com.google.gson.Gson;
 import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.PreferencesInterface;
 
+import java.lang.reflect.Type;
+
 /**
  * Created by AKS on 1/31/2018.
  */
@@ -79,8 +81,12 @@ public class PreferencesHelper implements PreferencesInterface {
 
     }
 
-    public <T> T convertFromJSONString(String jsonString, Class<T> className) {
+    public <T> T convertUsingClass(String jsonString, Class<T> className) {
         return gson.fromJson(jsonString, className);
+    }
+
+    public <T> T convertUsingType(String jsonString, Type typeOfT) {
+        return gson.fromJson(jsonString, typeOfT);
     }
 
     public String convertToJSONString(Parcelable parcelable) {
