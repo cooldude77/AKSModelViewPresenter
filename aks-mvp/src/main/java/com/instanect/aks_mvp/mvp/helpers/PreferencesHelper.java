@@ -2,7 +2,6 @@ package com.instanect.aks_mvp.mvp.helpers;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Parcelable;
 
 import com.google.gson.Gson;
 import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.PreferencesInterface;
@@ -89,7 +88,7 @@ public class PreferencesHelper implements PreferencesInterface {
         return gson.fromJson(jsonString, typeOfT);
     }
 
-    public String convertToJSONString(Parcelable parcelable) {
-        return gson.toJson(parcelable);
+    public String convertToJSONString(Object object) {
+        return gson.toJson(object);
     }
 }
