@@ -1,13 +1,13 @@
 package com.instanect.aks_mvp.mvp.interactors.network.interfaces;
 
-import com.instanect.aks_mvp.mvp.presenter.PresenterAsResponseToInteractorInterface;
+import com.instanect.aks_mvp.mvp.presenter.InteractorResponseInterface;
 import com.instanect.networkcommon.NetworkResponseInterface;
 
 /**
  * Created by AKS on 10/6/2017.
  */
 
-public interface NetworkInteractorResponseInterface extends PresenterAsResponseToInteractorInterface {
+public interface NetworkInteractorResponseInterface extends InteractorResponseInterface {
 
     // When scenario is successful
     <T> void onNetworkInteractorCallSuccessful(

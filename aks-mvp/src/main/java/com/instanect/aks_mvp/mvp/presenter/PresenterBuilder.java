@@ -3,6 +3,7 @@ package com.instanect.aks_mvp.mvp.presenter;
 import com.instanect.aks_mvp.LogTagGenerator;
 import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountCreateResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountInteractorInterface;
+import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountQueryResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountUpdateResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseInteractorResponseInterface;
@@ -82,34 +83,42 @@ public class PresenterBuilder {
 
         if (accountInteractorInterface != null) {
 
-            accountInteractorInterface.setAccountCreateResponseInterface(
-                    (AccountCreateResponseInterface) presenterInterface);
+            if (presenterInterface instanceof AccountCreateResponseInterface)
+                accountInteractorInterface.setAccountCreateResponseInterface(
+                        (AccountCreateResponseInterface) presenterInterface);
 
-            accountInteractorInterface.setAccountUpdateResponseInterface(
-                    (AccountUpdateResponseInterface) presenterInterface
-            );
+            if (presenterInterface instanceof AccountUpdateResponseInterface)
+                accountInteractorInterface.setAccountUpdateResponseInterface(
+                        (AccountUpdateResponseInterface) presenterInterface
+                );
 
-            accountInteractorInterface.setAccountUpdateResponseInterface(
-                    (AccountUpdateResponseInterface) presenterInterface
-            );
+            if (presenterInterface instanceof AccountQueryResponseInterface)
+                accountInteractorInterface.setAccountQueryResponseInterface(
+                        (AccountQueryResponseInterface) presenterInterface
+                );
         }
-        if (databaseInteractorInterface != null) {
-            databaseInteractorInterface.setDatabaseInteractorResponseInterface(
-                    (DatabaseInteractorResponseInterface) presenterInterface);
-        }
+        if (databaseInteractorInterface != null)
+            if (presenterInterface instanceof DatabaseInteractorResponseInterface)
+                databaseInteractorInterface.setDatabaseInteractorResponseInterface(
+                        (DatabaseInteractorResponseInterface) presenterInterface);
 
-        if (extractorInteractorInterface != null) {
-            extractorInteractorInterface.setExtractorInteractorResponseInterface(
-                    (ExtractorInteractorResponseInterface) presenterInterface);
-        }
-        if (networkInteractorInterface != null) {
-            networkInteractorInterface.setNetworkInteractorResponseInterface(
-                    (NetworkInteractorResponseInterface) presenterInterface);
-        }
+
+        if (extractorInteractorInterface != null)
+            if (presenterInterface instanceof ExtractorInteractorResponseInterface)
+                extractorInteractorInterface.setExtractorInteractorResponseInterface(
+                        (ExtractorInteractorResponseInterface) presenterInterface);
+
+
+        if (networkInteractorInterface != null)
+            if (networkInteractorInterface instanceof NetworkInteractorResponseInterface)
+                networkInteractorInterface.setNetworkInteractorResponseInterface(
+                        (NetworkInteractorResponseInterface) presenterInterface);
+
 
         if (preferencesInteractorInterface != null) {
-            preferencesInteractorInterface.setPreferencesInteractorResponseInterface(
-                    (PreferencesInteractorResponseInterface) presenterInterface);
+            if (preferencesInteractorInterface instanceof PreferencesInteractorResponseInterface)
+                preferencesInteractorInterface.setPreferencesInteractorResponseInterface(
+                        (PreferencesInteractorResponseInterface) presenterInterface);
         }
 
     }

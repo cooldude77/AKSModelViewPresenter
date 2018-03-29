@@ -1,10 +1,10 @@
 package com.instanect.aks_mvp.mvp.interactors.account.interfaces;
 
-import com.instanect.aks_mvp.mvp.presenter.PresenterAsResponseToInteractorInterface;
+import com.instanect.aks_mvp.mvp.presenter.InteractorResponseInterface;
 
 /**
  * Created by AKS on 3/20/2018.
  */
 
-public interface AccountCreateResponseInterface extends PresenterAsResponseToInteractorInterface {
+public interface AccountCreateResponseInterface extends InteractorResponseInterface {
 }
