@@ -1,5 +1,6 @@
 package di;
 
+import com.instanect.aks_mvp.mvp.interactors.account.builder.AccountInteractorBuilder;
 import com.instanect.aks_mvp.mvp.interactors.database.builder.DatabaseInteractorBuilder;
 import com.instanect.aks_mvp.mvp.interactors.extractor.ExtractorInteractorBuilder;
 import com.instanect.aks_mvp.mvp.interactors.network.builder.NetworkInteractorBuilder;
@@ -14,10 +15,22 @@ import dagger.Provides;
  */
 @Module
 public class AKSMVPModule {
+
     @Provides
-    ViewFactory provideViewFactory() {
-        return new ViewFactory();
+    public AccountInteractorBuilder provideAccountInteractorBuilder() {
+        return new AccountInteractorBuilder();
     }
+
+    @Provides
+    DatabaseInteractorBuilder provideDatabaseDatabaseInteractorBuilder() {
+        return new DatabaseInteractorBuilder();
+    }
+
+    @Provides
+    ExtractorInteractorBuilder provideExtractorInteractorBuilder() {
+        return new ExtractorInteractorBuilder();
+    }
+
 
     @Provides
     NetworkInteractorBuilder provideNetworkInteractorBuilder() {
@@ -25,18 +38,14 @@ public class AKSMVPModule {
     }
 
     @Provides
-    PreferenceInteractorBuilder providePreferenceInteractorBuilder(){
+    PreferenceInteractorBuilder providePreferenceInteractorBuilder() {
         return new PreferenceInteractorBuilder();
     }
 
     @Provides
-    ExtractorInteractorBuilder provideExtractorInteractorBuilder(){
-        return new ExtractorInteractorBuilder();
+    ViewFactory provideViewFactory() {
+        return new ViewFactory();
     }
 
-    @Provides
-    DatabaseInteractorBuilder provideDatabaseDatabaseInteractorBuilder(){
-        return new DatabaseInteractorBuilder();
-    }
 
 }
