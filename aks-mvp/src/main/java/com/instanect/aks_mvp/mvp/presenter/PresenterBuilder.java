@@ -110,13 +110,13 @@ public class PresenterBuilder {
 
 
         if (networkInteractorInterface != null)
-            if (networkInteractorInterface instanceof NetworkInteractorResponseInterface)
+            if (presenterInterface instanceof NetworkInteractorResponseInterface)
                 networkInteractorInterface.setNetworkInteractorResponseInterface(
                         (NetworkInteractorResponseInterface) presenterInterface);
 
 
         if (preferencesInteractorInterface != null) {
-            if (preferencesInteractorInterface instanceof PreferencesInteractorResponseInterface)
+            if (presenterInterface instanceof PreferencesInteractorResponseInterface)
                 preferencesInteractorInterface.setPreferencesInteractorResponseInterface(
                         (PreferencesInteractorResponseInterface) presenterInterface);
         }
