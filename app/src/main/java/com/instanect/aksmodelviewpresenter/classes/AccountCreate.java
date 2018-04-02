@@ -9,8 +9,9 @@ import com.instanect.accountcommon.account.account.operations.interfaces.respons
 
 public class AccountCreate implements AccountCreateInterface {
 
+
     @Override
-    public void createAccount(String email, String token, String username, String appAuthority) throws Exception {
+    public void createAccount(String email, String token, String username) throws Exception {
 
     }
 
