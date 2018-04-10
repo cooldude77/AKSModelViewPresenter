@@ -105,7 +105,9 @@ public class GenericAlertDialogBuilder {
                     "type GenericAlertDialogViewResponseInterface");
         if (positiveButtonText == null)
             throw new IllegalArgumentException("Positive Text not provided");
-        if (message == null)
+
+        if (message == null && view == null) // If view is not null , there
+            // is no need of message
             throw new IllegalArgumentException("Message is empty");
 
         if (onResponse == null)
