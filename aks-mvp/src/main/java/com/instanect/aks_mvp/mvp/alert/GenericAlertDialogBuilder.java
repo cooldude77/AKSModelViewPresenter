@@ -94,9 +94,10 @@ public class GenericAlertDialogBuilder {
         return this;
     }
 
-    public <T> void setParameter(T t) {
+    public <T> GenericAlertDialogBuilder setParameter(T t) {
 
         this.t = t;
+        return this;
     }
 
     public Dialog build() throws IllegalArgumentException {
