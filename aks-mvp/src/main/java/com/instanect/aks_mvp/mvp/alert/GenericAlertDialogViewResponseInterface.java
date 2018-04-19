@@ -8,7 +8,7 @@ import android.view.View;
 
 public interface GenericAlertDialogViewResponseInterface {
 
-    void onPositiveButtonClicked(int alertCode, View view);
+    void onPositiveButtonClicked(int alertCode, View view, Object t);
 
-    void onNegativeButtonClicked(int alertCode, View view);
+    void onNegativeButtonClicked(int alertCode, View view, Object t);
 }

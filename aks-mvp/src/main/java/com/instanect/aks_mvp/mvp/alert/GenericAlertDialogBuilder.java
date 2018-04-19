@@ -29,6 +29,7 @@ public class GenericAlertDialogBuilder {
     private String neutralButtonText;
     private AlertDialogBuilderProvider alertDialogBuilderProvider;
     private android.app.AlertDialog.Builder builder;
+    private Object t;
 
     public GenericAlertDialogBuilder(AlertDialogBuilderProvider alertDialogBuilderProvider) {
 
@@ -93,6 +94,10 @@ public class GenericAlertDialogBuilder {
         return this;
     }
 
+    public <T> void setParameter(T t) {
+
+        this.t = t;
+    }
 
     public Dialog build() throws IllegalArgumentException {
 
@@ -131,10 +136,10 @@ public class GenericAlertDialogBuilder {
                         public void onClick(DialogInterface dialog, int which) {
                             if (view != null)
                                 ((GenericAlertDialogViewResponseInterface) onResponse)
-                                        .onPositiveButtonClicked(alertCode, view);
+                                        .onPositiveButtonClicked(alertCode, view, t);
                             else {
                                 if (onResponse != null)
-                                    onResponse.onPositiveButtonClicked(alertCode);
+                                    onResponse.onPositiveButtonClicked(alertCode, t);
                                 else {
                                     Log.w(TAG, "On response is null");
                                 }
@@ -149,10 +154,10 @@ public class GenericAlertDialogBuilder {
                             public void onClick(DialogInterface dialog, int which) {
                                 if (view != null)
                                     ((GenericAlertDialogViewResponseInterface) onResponse)
-                                            .onNegativeButtonClicked(alertCode, view);
+                                            .onNegativeButtonClicked(alertCode, view, t);
                                 else {
                                     if (onResponse != null)
-                                        onResponse.onNegativeButtonClicked(alertCode);
+                                        onResponse.onNegativeButtonClicked(alertCode, t);
                                     else {
                                         Log.w(TAG, "On response is null");
                                     }
@@ -186,10 +191,10 @@ public class GenericAlertDialogBuilder {
                         public void onClick(DialogInterface dialog, int which) {
                             if (view != null)
                                 ((GenericAlertDialogViewResponseInterface) onResponse)
-                                        .onPositiveButtonClicked(alertCode, view);
+                                        .onPositiveButtonClicked(alertCode, view, t);
                             else {
                                 if (onResponse != null)
-                                    onResponse.onPositiveButtonClicked(alertCode);
+                                    onResponse.onPositiveButtonClicked(alertCode, t);
                                 else {
                                     Log.w(TAG, "On response is null");
                                 }
@@ -204,10 +209,10 @@ public class GenericAlertDialogBuilder {
                             public void onClick(DialogInterface dialog, int which) {
                                 if (view != null)
                                     ((GenericAlertDialogViewResponseInterface) onResponse)
-                                            .onNegativeButtonClicked(alertCode, view);
+                                            .onNegativeButtonClicked(alertCode, view, t);
                                 else {
                                     if (onResponse != null)
-                                        onResponse.onNegativeButtonClicked(alertCode);
+                                        onResponse.onNegativeButtonClicked(alertCode, t);
                                     else {
                                         Log.w(TAG, "On response is null");
                                     }

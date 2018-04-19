@@ -5,7 +5,7 @@ package com.instanect.aks_mvp.mvp.alert;
  */
 
 public interface GenericAlertDialogResponseInterface {
-    void onPositiveButtonClicked(int alertCode);
+    void onPositiveButtonClicked(int alertCode, Object t);
 
-    void onNegativeButtonClicked(int alertCode);
+    void onNegativeButtonClicked(int alertCode, Object t);
 }
