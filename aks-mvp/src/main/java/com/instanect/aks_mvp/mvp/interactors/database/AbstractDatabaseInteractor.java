@@ -10,8 +10,8 @@ import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseInterac
  */
 
 abstract public class AbstractDatabaseInteractor implements DatabaseInteractorInterface {
-    protected final DatabaseApiInterface databaseApiInterface;
-    protected DatabaseInteractorResponseInterface databaseInteractorResponseInterface;
+    private final DatabaseApiInterface databaseApiInterface;
+    private DatabaseInteractorResponseInterface databaseInteractorResponseInterface;
 
     public AbstractDatabaseInteractor(DatabaseApiInterface databaseApiInterface) {
         this.databaseApiInterface = databaseApiInterface;
@@ -22,4 +22,13 @@ abstract public class AbstractDatabaseInteractor implements DatabaseInteractorIn
         this.databaseInteractorResponseInterface = databaseInteractorResponseInterface;
     }
 
+    @Override
+    public DatabaseApiInterface getDatabaseApiInterface() {
+        return databaseApiInterface;
+    }
+
+    @Override
+    public DatabaseInteractorResponseInterface getDatabaseInteractorResponseInterface() {
+        return databaseInteractorResponseInterface;
+    }
 }

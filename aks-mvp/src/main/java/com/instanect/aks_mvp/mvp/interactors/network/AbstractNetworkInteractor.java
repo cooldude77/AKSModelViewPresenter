@@ -23,10 +23,12 @@ abstract public class AbstractNetworkInteractor implements NetworkInteractorInte
         this.networkInterface = networkInterface;
     }
 
+    @Override
     public NetworkInterface getNetworkInterface() {
         return networkInterface;
     }
 
+    @Override
     public NetworkInteractorResponseInterface getNetworkInteractorResponseInterface() {
         return networkInteractorResponseInterface;
     }

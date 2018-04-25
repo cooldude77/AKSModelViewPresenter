@@ -5,5 +5,11 @@ package com.instanect.aks_mvp.mvp.interactors.preferences.interfaces;
  */
 
 public interface PreferencesInteractorInterface {
+    PreferencesInterface getPreferencesInterface();
+
+    void setPreferencesInterface(PreferencesInterface preferencesInterface);
+
+    PreferencesInteractorResponseInterface getPreferencesInteractorResponseInterface();
+
     void setPreferencesInteractorResponseInterface(PreferencesInteractorResponseInterface preferencesInteractorResponseInterface);
 }

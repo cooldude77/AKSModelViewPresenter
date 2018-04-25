@@ -1,4 +1,4 @@
-package com.instanect.aks_mvp.mvp.interactors.extractor;
+package com.instanect.aks_mvp.mvp.interactors.extractor.interfaces;
 
 
 import com.instanect.networkcommon.NetworkResponseInterface;
@@ -14,4 +14,8 @@ public interface ExtractorInteractorInterface {
     void extract(NetworkResponseInterface<JSONObject> networkResponse);
 
     void setExtractorInteractorResponseInterface(ExtractorInteractorResponseInterface extractorInteractorResponseInterface);
+
+    ExtractorInterface getExtractorInterface();
+
+    ExtractorInteractorResponseInterface getExtractorInteractorResponseInterface();
 }

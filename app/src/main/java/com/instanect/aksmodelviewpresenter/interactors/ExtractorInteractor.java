@@ -1,7 +1,7 @@
 package com.instanect.aksmodelviewpresenter.interactors;
 
 import com.instanect.aks_mvp.mvp.interactors.extractor.AbstractExtractorInteractor;
-import com.instanect.aks_mvp.mvp.interactors.extractor.ExtractorInterface;
+import com.instanect.aks_mvp.mvp.interactors.extractor.interfaces.ExtractorInterface;
 
 /**
  * Created by AKS on 3/28/2018.

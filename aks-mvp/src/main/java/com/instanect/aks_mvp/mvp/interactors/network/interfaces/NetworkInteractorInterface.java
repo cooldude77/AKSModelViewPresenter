@@ -2,6 +2,7 @@ package com.instanect.aks_mvp.mvp.interactors.network.interfaces;
 
 
 import com.instanect.accountcommon.account.authorization.AuthorizationHeaderInterface;
+import com.instanect.networkcommon.NetworkInterface;
 import com.instanect.networkcommon.NetworkResponseInterface;
 
 import java.util.HashMap;
@@ -11,6 +12,10 @@ import java.util.HashMap;
  */
 
 public interface NetworkInteractorInterface {
+
+    NetworkInterface getNetworkInterface();
+
+    NetworkInteractorResponseInterface getNetworkInteractorResponseInterface();
 
     void setNetworkInteractorResponseInterface(NetworkInteractorResponseInterface networkInteractorResponseInterface);
 

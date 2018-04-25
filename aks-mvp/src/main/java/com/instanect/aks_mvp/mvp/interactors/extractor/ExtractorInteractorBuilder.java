@@ -1,6 +1,9 @@
 package com.instanect.aks_mvp.mvp.interactors.extractor;
 
 
+import com.instanect.aks_mvp.mvp.interactors.extractor.interfaces.ExtractorInteractorInterface;
+import com.instanect.aks_mvp.mvp.interactors.extractor.interfaces.ExtractorInterface;
+
 import java.lang.reflect.InvocationTargetException;
 
 /**

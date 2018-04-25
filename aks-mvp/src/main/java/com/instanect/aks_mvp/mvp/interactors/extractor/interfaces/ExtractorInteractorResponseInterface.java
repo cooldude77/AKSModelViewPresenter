@@ -1,4 +1,4 @@
-package com.instanect.aks_mvp.mvp.interactors.extractor;
+package com.instanect.aks_mvp.mvp.interactors.extractor.interfaces;
 
 import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseObjectInterface;
 

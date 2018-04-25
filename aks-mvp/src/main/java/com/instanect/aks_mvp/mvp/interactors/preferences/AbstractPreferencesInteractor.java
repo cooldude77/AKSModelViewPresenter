@@ -21,14 +21,17 @@ abstract public class AbstractPreferencesInteractor implements PreferencesIntera
         this.preferencesInterface = preferencesInterface;
     }
 
+    @Override
     public PreferencesInterface getPreferencesInterface() {
         return preferencesInterface;
     }
 
+    @Override
     public void setPreferencesInterface(PreferencesInterface preferencesInterface) {
         this.preferencesInterface = preferencesInterface;
     }
 
+    @Override
     public PreferencesInteractorResponseInterface getPreferencesInteractorResponseInterface() {
         return preferencesInteractorResponseInterface;
     }

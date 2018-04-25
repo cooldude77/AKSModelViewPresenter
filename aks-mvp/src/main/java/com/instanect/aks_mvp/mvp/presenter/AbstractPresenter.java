@@ -2,7 +2,7 @@ package com.instanect.aks_mvp.mvp.presenter;
 
 import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseInteractorInterface;
-import com.instanect.aks_mvp.mvp.interactors.extractor.ExtractorInteractorInterface;
+import com.instanect.aks_mvp.mvp.interactors.extractor.interfaces.ExtractorInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.PreferencesInteractorInterface;
 import com.instanect.aks_mvp.mvp.presenter.interfaces.PresenterInterface;
