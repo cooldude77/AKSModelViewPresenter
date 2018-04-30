@@ -67,5 +67,9 @@ abstract public class AbstractNetworkInteractor implements NetworkInteractorInte
         networkInteractorResponseInterface.onNetworkInteractorCallSuccessful(networkResponse);
     }
 
+    public void tryAbort() {
+        networkInterface.tryAbort();
+    }
+
 
 }

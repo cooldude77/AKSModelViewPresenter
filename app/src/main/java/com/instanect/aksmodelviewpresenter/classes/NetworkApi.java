@@ -7,4 +7,8 @@ import com.instanect.networkcommon.NetworkInterface;
  */
 
 public class NetworkApi implements NetworkInterface {
+    @Override
+    public void tryAbort() {
+
+    }
 }
