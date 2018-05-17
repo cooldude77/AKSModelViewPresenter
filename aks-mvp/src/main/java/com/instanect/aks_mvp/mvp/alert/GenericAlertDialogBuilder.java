@@ -11,6 +11,8 @@ import android.view.View;
 
 import com.instanect.aks_mvp.LogTagGenerator;
 
+import static junit.framework.Assert.assertNotNull;
+
 /**
  * GenericAlertDialogBuilder
  */
@@ -30,6 +32,7 @@ public class GenericAlertDialogBuilder {
     private AlertDialogBuilderProvider alertDialogBuilderProvider;
     private android.app.AlertDialog.Builder builder;
     private Object t;
+    private Context context;
 
     public GenericAlertDialogBuilder(AlertDialogBuilderProvider alertDialogBuilderProvider) {
 
@@ -48,6 +51,7 @@ public class GenericAlertDialogBuilder {
         this.inflater = (LayoutInflater) context
                 .getSystemService(Service.LAYOUT_INFLATER_SERVICE);
 
+        this.context = context;
         return this;
     }
 
@@ -57,10 +61,24 @@ public class GenericAlertDialogBuilder {
         return this;
     }
 
+    public GenericAlertDialogBuilder setTitle(int resId) {
+
+        assertNotNull(context);
+        return setTitle(context.getString(resId));
+
+    }
+
     public GenericAlertDialogBuilder setMessage(String message) {
 
         this.message = message;
         return this;
+    }
+
+    public GenericAlertDialogBuilder setMessage(int resId) {
+
+        assertNotNull(context);
+        return setMessage(context.getString(resId));
+
     }
 
     public GenericAlertDialogBuilder setView(View view) {
@@ -81,10 +99,21 @@ public class GenericAlertDialogBuilder {
         return this;
     }
 
+    public GenericAlertDialogBuilder setPositiveButtonText(int resId) {
+        assertNotNull(context);
+        return setPositiveButtonText(context.getString(resId));
+    }
+
     public GenericAlertDialogBuilder setNegativeButtonText(String negativeButtonText) {
 
         this.negativeButtonText = negativeButtonText;
         return this;
+    }
+
+    public GenericAlertDialogBuilder setNegativeButtonText(int resId) {
+        assertNotNull(context);
+        return setNegativeButtonText(context.getString(resId));
+
     }
 
     public GenericAlertDialogBuilder setResponse(
