@@ -45,10 +45,10 @@ public class GenericAlertDialogBuilder {
 
         if (context == null)
             throw new IllegalArgumentException("Context is null");
-        if (!isRobolectricLoaded())
-            this.builderV7 = alertDialogBuilderProvider.getBuilderV7(context);
-        else
+        if (isRobolectricLoaded())
             this.builder = new android.app.AlertDialog.Builder(context);
+        else
+            this.builderV7 = alertDialogBuilderProvider.getBuilderV7(context);
         this.inflater = (LayoutInflater) context
                 .getSystemService(Service.LAYOUT_INFLATER_SERVICE);
 
@@ -153,14 +153,84 @@ public class GenericAlertDialogBuilder {
                 && !(onResponse instanceof GenericAlertDialogViewResponseInterface))
             throw new IllegalArgumentException("");
 
-        if (!isRobolectricLoaded()) {
-            builderV7.setTitle(title);
-            builderV7.setMessage(message);
+        if (isRobolectricLoaded()) {
+            final android.app.AlertDialog alertDialog = builder.create();
+            alertDialog.setTitle(title);
+            alertDialog.setMessage(message);
 
             if (view != null)
-                builderV7.setView(view);
+                alertDialog.setView(view);
 
-            builderV7.setPositiveButton(
+            alertDialog.setButton(DialogInterface.BUTTON_POSITIVE,
+                    positiveButtonText,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            if (view != null)
+                                ((GenericAlertDialogViewResponseInterface) onResponse)
+                                        .onPositiveButtonClicked(alertCode, view, t);
+                            else {
+                                if (onResponse != null)
+                                    onResponse.onPositiveButtonClicked(alertCode, t);
+                                else {
+                                    Log.w(TAG, "On response is null");
+                                }
+                            }
+                            // Need to dismiss this manually as the view stays even
+                            // after the dialog is closed
+                            if (alertDialog.isShowing()) {
+                                alertDialog.dismiss();
+                            }
+
+                        }
+                    });
+            if (negativeButtonText != null)
+                alertDialog.setButton(
+                        DialogInterface.BUTTON_NEGATIVE,
+                        negativeButtonText,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (view != null)
+                                    ((GenericAlertDialogViewResponseInterface) onResponse)
+                                            .onNegativeButtonClicked(alertCode, view, t);
+                                else {
+                                    if (onResponse != null)
+                                        onResponse.onNegativeButtonClicked(alertCode, t);
+                                    else {
+                                        Log.w(TAG, "On response is null");
+                                    }
+
+                                    if (neutralButtonText != null)
+                                        builder.setNeutralButton(neutralButtonText,
+                                                new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                                        ((GenericAlertDialogWithNeutralResponseInterface) onResponse)
+                                                                .onNeutralButtonPressed(alertCode);
+                                                    }
+                                                });
+                                }
+                                // Need to dismiss this manually as the view stays even
+                                // after the dialog is closed
+                                if (alertDialog.isShowing()) {
+                                    alertDialog.dismiss();
+                                }
+
+                            }
+                        });
+            return alertDialog;
+        } else {
+            final AlertDialog alertDialog = builderV7.create();
+            alertDialog.setTitle(title);
+            alertDialog.setMessage(message);
+
+            if (view != null)
+                alertDialog.setView(view);
+
+            alertDialog.setButton(
+                    DialogInterface.BUTTON_POSITIVE,
                     positiveButtonText,
                     new DialogInterface.OnClickListener() {
                         @Override
@@ -178,14 +248,14 @@ public class GenericAlertDialogBuilder {
 
                             // Need to dismiss this manually as the view stays even
                             // after the dialog is closed
-                            if (alertDialog != null && alertDialog.isShowing()) {
+                            if (alertDialog.isShowing()) {
                                 alertDialog.dismiss();
-                                builderV7 = null;
                             }
                         }
                     });
             if (negativeButtonText != null)
-                builderV7.setNegativeButton(
+                alertDialog.setButton(
+                        DialogInterface.BUTTON_NEGATIVE,
                         negativeButtonText,
                         new DialogInterface.OnClickListener() {
                             @Override
@@ -213,67 +283,11 @@ public class GenericAlertDialogBuilder {
                                 }
                                 // Need to dismiss this manually as the view stays even
                                 // after the dialog is closed
-                                if (alertDialog != null && alertDialog.isShowing()) {
+                                if (alertDialog.isShowing()) {
                                     alertDialog.dismiss();
                                 }
                             }
                         });
-            alertDialog = builderV7.create();
-            return alertDialog;
-        } else {
-            builder.setTitle(title);
-            builder.setMessage(message);
-
-            if (view != null)
-                builder.setView(view);
-
-            builder.setPositiveButton(
-                    positiveButtonText,
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            if (view != null)
-                                ((GenericAlertDialogViewResponseInterface) onResponse)
-                                        .onPositiveButtonClicked(alertCode, view, t);
-                            else {
-                                if (onResponse != null)
-                                    onResponse.onPositiveButtonClicked(alertCode, t);
-                                else {
-                                    Log.w(TAG, "On response is null");
-                                }
-                            }
-                        }
-                    });
-            if (negativeButtonText != null)
-                builder.setNegativeButton(
-                        negativeButtonText,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                if (view != null)
-                                    ((GenericAlertDialogViewResponseInterface) onResponse)
-                                            .onNegativeButtonClicked(alertCode, view, t);
-                                else {
-                                    if (onResponse != null)
-                                        onResponse.onNegativeButtonClicked(alertCode, t);
-                                    else {
-                                        Log.w(TAG, "On response is null");
-                                    }
-
-                                    if (neutralButtonText != null)
-                                        builder.setNeutralButton(neutralButtonText,
-                                                new DialogInterface.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                                                        ((GenericAlertDialogWithNeutralResponseInterface) onResponse)
-                                                                .onNeutralButtonPressed(alertCode);
-                                                    }
-                                                });
-                                }
-                            }
-                        });
-            alertDialog = builder.create();
             return alertDialog;
         }
 
@@ -284,13 +298,14 @@ public class GenericAlertDialogBuilder {
         return this;
     }
 
-    public boolean isRobolectricLoaded() {
+    private boolean isRobolectricLoaded() {
         try {
             Class.forName("org.robolectric.Robolectric");
+            return true;
         } catch (ClassNotFoundException e) {
             Log.d("Generic Alert", "RoboNot found");
             return false;
         }
-        return true;
+
     }
 }
