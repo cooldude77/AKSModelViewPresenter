@@ -33,6 +33,7 @@ public class GenericAlertDialogBuilder {
     private android.app.AlertDialog.Builder builder;
     private Object t;
     private Context context;
+    private Dialog alertDialog;
 
     public GenericAlertDialogBuilder(AlertDialogBuilderProvider alertDialogBuilderProvider) {
 
@@ -174,6 +175,13 @@ public class GenericAlertDialogBuilder {
                                     Log.w(TAG, "On response is null");
                                 }
                             }
+
+                            // Need to dismiss this manually as the view stays even
+                            // after the dialog is closed
+                            if (alertDialog != null && alertDialog.isShowing()) {
+                                alertDialog.dismiss();
+                                builderV7 = null;
+                            }
                         }
                     });
             if (negativeButtonText != null)
@@ -203,10 +211,15 @@ public class GenericAlertDialogBuilder {
                                                     }
                                                 });
                                 }
+                                // Need to dismiss this manually as the view stays even
+                                // after the dialog is closed
+                                if (alertDialog != null && alertDialog.isShowing()) {
+                                    alertDialog.dismiss();
+                                }
                             }
                         });
-            return builderV7.create();
-
+            alertDialog = builderV7.create();
+            return alertDialog;
         } else {
             builder.setTitle(title);
             builder.setMessage(message);
@@ -260,8 +273,8 @@ public class GenericAlertDialogBuilder {
                                 }
                             }
                         });
-            return builder.create();
-
+            alertDialog = builder.create();
+            return alertDialog;
         }
 
     }
