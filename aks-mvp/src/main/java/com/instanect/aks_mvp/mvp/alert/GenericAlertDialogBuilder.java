@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.instanect.aks_mvp.LogTagGenerator;
 
@@ -180,6 +181,8 @@ public class GenericAlertDialogBuilder {
                             // after the dialog is closed
                             if (alertDialog.isShowing()) {
                                 alertDialog.dismiss();
+                                if (view != null)
+                                    ((ViewGroup) view.getParent()).removeView(view);
                             }
 
                         }
@@ -216,6 +219,8 @@ public class GenericAlertDialogBuilder {
                                 // after the dialog is closed
                                 if (alertDialog.isShowing()) {
                                     alertDialog.dismiss();
+                                    if (view != null)
+                                        ((ViewGroup) view.getParent()).removeView(view);
                                 }
 
                             }
@@ -250,6 +255,8 @@ public class GenericAlertDialogBuilder {
                             // after the dialog is closed
                             if (alertDialog.isShowing()) {
                                 alertDialog.dismiss();
+                                if (view != null)
+                                    ((ViewGroup) view.getParent()).removeView(view);
                             }
                         }
                     });
@@ -285,6 +292,8 @@ public class GenericAlertDialogBuilder {
                                 // after the dialog is closed
                                 if (alertDialog.isShowing()) {
                                     alertDialog.dismiss();
+                                    if (view != null)
+                                        ((ViewGroup) view.getParent()).removeView(view);
                                 }
                             }
                         });
