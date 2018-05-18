@@ -32,9 +32,8 @@ public class GenericAlertDialogBuilder {
     private String neutralButtonText;
     private AlertDialogBuilderProvider alertDialogBuilderProvider;
     private android.app.AlertDialog.Builder builder;
-    private Object t;
+    private Object objectToBePassedToCaller;
     private Context context;
-    private Dialog alertDialog;
 
     public GenericAlertDialogBuilder(AlertDialogBuilderProvider alertDialogBuilderProvider) {
 
@@ -54,6 +53,17 @@ public class GenericAlertDialogBuilder {
                 .getSystemService(Service.LAYOUT_INFLATER_SERVICE);
 
         this.context = context;
+
+        title = null;
+        message = null;
+        positiveButtonText = null;
+        negativeButtonText = null;
+        neutralButtonText = null;
+        alertCode = -1;
+        view = null;
+        onResponse = null;
+        objectToBePassedToCaller = null;
+
         return this;
     }
 
@@ -127,7 +137,7 @@ public class GenericAlertDialogBuilder {
 
     public <T> GenericAlertDialogBuilder setParameter(T t) {
 
-        this.t = t;
+        this.objectToBePassedToCaller = t;
         return this;
     }
 
@@ -169,10 +179,10 @@ public class GenericAlertDialogBuilder {
                         public void onClick(DialogInterface dialog, int which) {
                             if (view != null)
                                 ((GenericAlertDialogViewResponseInterface) onResponse)
-                                        .onPositiveButtonClicked(alertCode, view, t);
+                                        .onPositiveButtonClicked(alertCode, view, objectToBePassedToCaller);
                             else {
                                 if (onResponse != null)
-                                    onResponse.onPositiveButtonClicked(alertCode, t);
+                                    onResponse.onPositiveButtonClicked(alertCode, objectToBePassedToCaller);
                                 else {
                                     Log.w(TAG, "On response is null");
                                 }
@@ -196,10 +206,10 @@ public class GenericAlertDialogBuilder {
                             public void onClick(DialogInterface dialog, int which) {
                                 if (view != null)
                                     ((GenericAlertDialogViewResponseInterface) onResponse)
-                                            .onNegativeButtonClicked(alertCode, view, t);
+                                            .onNegativeButtonClicked(alertCode, view, objectToBePassedToCaller);
                                 else {
                                     if (onResponse != null)
-                                        onResponse.onNegativeButtonClicked(alertCode, t);
+                                        onResponse.onNegativeButtonClicked(alertCode, objectToBePassedToCaller);
                                     else {
                                         Log.w(TAG, "On response is null");
                                     }
@@ -242,10 +252,10 @@ public class GenericAlertDialogBuilder {
                         public void onClick(DialogInterface dialog, int which) {
                             if (view != null)
                                 ((GenericAlertDialogViewResponseInterface) onResponse)
-                                        .onPositiveButtonClicked(alertCode, view, t);
+                                        .onPositiveButtonClicked(alertCode, view, objectToBePassedToCaller);
                             else {
                                 if (onResponse != null)
-                                    onResponse.onPositiveButtonClicked(alertCode, t);
+                                    onResponse.onPositiveButtonClicked(alertCode, objectToBePassedToCaller);
                                 else {
                                     Log.w(TAG, "On response is null");
                                 }
@@ -269,10 +279,10 @@ public class GenericAlertDialogBuilder {
                             public void onClick(DialogInterface dialog, int which) {
                                 if (view != null)
                                     ((GenericAlertDialogViewResponseInterface) onResponse)
-                                            .onNegativeButtonClicked(alertCode, view, t);
+                                            .onNegativeButtonClicked(alertCode, view, objectToBePassedToCaller);
                                 else {
                                     if (onResponse != null)
-                                        onResponse.onNegativeButtonClicked(alertCode, t);
+                                        onResponse.onNegativeButtonClicked(alertCode, objectToBePassedToCaller);
                                     else {
                                         Log.w(TAG, "On response is null");
                                     }
