@@ -12,6 +12,7 @@ import com.instanect.aks_mvp.mvp.interactors.extractor.ExtractorInteractorBuilde
 import com.instanect.aks_mvp.mvp.interactors.network.builder.NetworkInteractorBuilder;
 import com.instanect.aks_mvp.mvp.interactors.preferences.builder.PreferenceInteractorBuilder;
 import com.instanect.aks_mvp.mvp.view.factory.ViewFactory;
+import com.instanect.aks_mvp.mvp.view.helper.AppViewHelper;
 
 import dagger.Module;
 import dagger.Provides;
@@ -70,4 +71,8 @@ public class AKSMVPModule {
     }
 
 
+    @Provides
+    AppViewHelper provideAppViewHelper() {
+        return new AppViewHelper(context);
+    }
 }
