@@ -12,7 +12,8 @@ import android.view.ViewGroup;
 
 import com.instanect.aks_mvp.LogTagGenerator;
 
-import static junit.framework.Assert.assertNotNull;
+import static org.junit.Assert.assertNotNull;
+
 
 /**
  * GenericAlertDialogBuilder
