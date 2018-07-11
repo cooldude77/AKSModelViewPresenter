@@ -1,5 +1,6 @@
 package com.instanect.aks_mvp.mvp.presenter;
 
+import com.instanect.accountcommon.account.authorization.AuthorizationHeaderInterfaceProviderInterface;
 import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.extractor.interfaces.ExtractorInteractorInterface;
@@ -22,8 +23,11 @@ public abstract class AbstractPresenter implements PresenterInterface {
     private PreferencesInteractorInterface preferencesInteractorInterface;
     private PresenterResponseInterface presenterResponseInterface;
 
+
+    private AuthorizationHeaderInterfaceProviderInterface authorizationHeaderInterfaceProviderInterface;
+
     @Override
-    public void attachPresenterResponseInterface(PresenterResponseInterface presenterResponseInterface) {
+    public void setPresenterResponseInterface(PresenterResponseInterface presenterResponseInterface) {
 
         this.presenterResponseInterface = presenterResponseInterface;
     }
@@ -77,4 +81,7 @@ public abstract class AbstractPresenter implements PresenterInterface {
         this.preferencesInteractorInterface = preferencesInteractorInterface;
     }
 
+    public void setAuthorizationHeaderInterfaceProviderInterface(AuthorizationHeaderInterfaceProviderInterface authorizationHeaderInterfaceProviderInterface) {
+        this.authorizationHeaderInterfaceProviderInterface = authorizationHeaderInterfaceProviderInterface;
+    }
 }

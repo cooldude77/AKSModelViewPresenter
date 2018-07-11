@@ -23,6 +23,6 @@ public interface PresenterInterface extends BasePresenterInterface {
 
     void setPreferencesInteractorInterface(PreferencesInteractorInterface preferencesInteractorInterface);
 
-    void attachPresenterResponseInterface(PresenterResponseInterface presenterResponseInterface);
+    void setPresenterResponseInterface(PresenterResponseInterface presenterResponseInterface);
 
 }
