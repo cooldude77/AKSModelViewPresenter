@@ -1,13 +1,13 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 27
-        versionCode 51
-        versionName "0.0.51"
+        targetSdkVersion 28
+        versionCode 52
+        versionName "0.0.52"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -38,7 +38,7 @@ ext {
     siteUrl = 'https://github.com/cooldude77/AKSModelViewPresenter'
     gitUrl = 'https://github.com/cooldude77/AKSModelViewPresenter.git'
 
-    libraryVersion = '0.0.51'
+    libraryVersion = '0.0.52'
 
     developerId = 'cooldude77'
     developerName = 'Ashvini'
@@ -55,9 +55,9 @@ ext {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.google.code.gson:gson:2.8.1'
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:appcompat-v7:28.0.0-alpha3'
 
-    implementation 'com.instanect.accountcommon:accountcommon:0.0.15'
+    implementation 'com.instanect.accountcommon:accountcommon:0.0.16'
     implementation 'com.instanect.networkcommon:networkcommon:0.0.5'
     // Dagger
     implementation 'com.google.dagger:dagger:2.12'
