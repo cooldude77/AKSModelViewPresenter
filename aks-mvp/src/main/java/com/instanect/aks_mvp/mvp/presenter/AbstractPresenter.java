@@ -84,4 +84,8 @@ public abstract class AbstractPresenter implements PresenterInterface {
     public void setAuthorizationHeaderInterfaceProviderInterface(AuthorizationHeaderInterfaceProviderInterface authorizationHeaderInterfaceProviderInterface) {
         this.authorizationHeaderInterfaceProviderInterface = authorizationHeaderInterfaceProviderInterface;
     }
+
+    public AuthorizationHeaderInterfaceProviderInterface getAuthorizationHeaderInterfaceProviderInterface() {
+        return authorizationHeaderInterfaceProviderInterface;
+    }
 }
