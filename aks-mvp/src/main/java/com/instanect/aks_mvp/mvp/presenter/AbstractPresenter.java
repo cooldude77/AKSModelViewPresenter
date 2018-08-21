@@ -1,7 +1,6 @@
 package com.instanect.aks_mvp.mvp.presenter;
 
-import com.instanect.accountcommon.account.authorization.AuthorizationHeaderInterfaceProviderInterface;
-import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountInteractorInterface;
+import com.instanect.aks_mvp.mvp.interactors.business.interfaces.BusinessLogicInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.extractor.interfaces.ExtractorInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteractorInterface;
@@ -16,15 +15,12 @@ import com.instanect.aks_mvp.mvp.presenter.interfaces.PresenterResponseInterface
 public abstract class AbstractPresenter implements PresenterInterface {
 
 
-    private AccountInteractorInterface accountInteractorInterface;
     private DatabaseInteractorInterface databaseInteractorInterface;
     private ExtractorInteractorInterface extractorInteractorInterface;
     private NetworkInteractorInterface networkInteractorInterface;
     private PreferencesInteractorInterface preferencesInteractorInterface;
+    private BusinessLogicInteractorInterface businessLogicInteractorInterface;
     private PresenterResponseInterface presenterResponseInterface;
-
-
-    private AuthorizationHeaderInterfaceProviderInterface authorizationHeaderInterfaceProviderInterface;
 
     @Override
     public void setPresenterResponseInterface(PresenterResponseInterface presenterResponseInterface) {
@@ -32,19 +28,12 @@ public abstract class AbstractPresenter implements PresenterInterface {
         this.presenterResponseInterface = presenterResponseInterface;
     }
 
+    @Override
     public PresenterResponseInterface getPresenterResponseInterface() {
         return presenterResponseInterface;
     }
 
-    public AccountInteractorInterface getAccountInteractorInterface() {
-        return accountInteractorInterface;
-    }
-
     @Override
-    public void setAccountInteractorInterface(AccountInteractorInterface accountInteractorInterface) {
-        this.accountInteractorInterface = accountInteractorInterface;
-    }
-
     public DatabaseInteractorInterface getDatabaseInteractorInterface() {
         return databaseInteractorInterface;
     }
@@ -54,6 +43,7 @@ public abstract class AbstractPresenter implements PresenterInterface {
         this.databaseInteractorInterface = databaseInteractorInterface;
     }
 
+    @Override
     public ExtractorInteractorInterface getExtractorInteractorInterface() {
         return extractorInteractorInterface;
     }
@@ -63,6 +53,7 @@ public abstract class AbstractPresenter implements PresenterInterface {
         this.extractorInteractorInterface = extractorInteractorInterface;
     }
 
+    @Override
     public NetworkInteractorInterface getNetworkInteractorInterface() {
         return networkInteractorInterface;
     }
@@ -72,6 +63,7 @@ public abstract class AbstractPresenter implements PresenterInterface {
         this.networkInteractorInterface = networkInteractorInterface;
     }
 
+    @Override
     public PreferencesInteractorInterface getPreferencesInteractorInterface() {
         return preferencesInteractorInterface;
     }
@@ -81,11 +73,13 @@ public abstract class AbstractPresenter implements PresenterInterface {
         this.preferencesInteractorInterface = preferencesInteractorInterface;
     }
 
-    public void setAuthorizationHeaderInterfaceProviderInterface(AuthorizationHeaderInterfaceProviderInterface authorizationHeaderInterfaceProviderInterface) {
-        this.authorizationHeaderInterfaceProviderInterface = authorizationHeaderInterfaceProviderInterface;
+    @Override
+    public BusinessLogicInteractorInterface getBusinessLogicInteractorInterface() {
+        return businessLogicInteractorInterface;
     }
 
-    public AuthorizationHeaderInterfaceProviderInterface getAuthorizationHeaderInterfaceProviderInterface() {
-        return authorizationHeaderInterfaceProviderInterface;
+    @Override
+    public void setBusinessLogicInteractorInterface(BusinessLogicInteractorInterface businessLogicInteractorInterface) {
+        this.businessLogicInteractorInterface = businessLogicInteractorInterface;
     }
 }

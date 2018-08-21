@@ -7,7 +7,7 @@ import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteracto
 import com.instanect.networkcommon.NetworkInterface;
 import com.instanect.networkcommon.NetworkResponseInterface;
 
-import junit.framework.Assert;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * AbstractNetworkInteractor
@@ -40,19 +40,19 @@ abstract public class AbstractNetworkInteractor implements NetworkInteractorInte
 
     @Override
     public void onError(String errorMessage, int errorCode) {
-        Assert.assertNotNull(networkInteractorResponseInterface);
+        assertNotNull(networkInteractorResponseInterface);
         networkInteractorResponseInterface.onNetworkInteractorScenarioCallFailure(errorMessage, errorCode);
     }
 
     @Override
     public void onInternetNotAvailable() {
-        Assert.assertNotNull(networkInteractorResponseInterface);
+        assertNotNull(networkInteractorResponseInterface);
         networkInteractorResponseInterface.onInternetNotAvailable();
     }
 
     @Override
     public void onAdditionalUrlNotAvailable(String messageOnNotAvailable) {
-        Assert.assertNotNull(networkInteractorResponseInterface);
+        assertNotNull(networkInteractorResponseInterface);
         networkInteractorResponseInterface.onAdditionalUrlNotAvailable(messageOnNotAvailable);
     }
 
@@ -63,7 +63,7 @@ abstract public class AbstractNetworkInteractor implements NetworkInteractorInte
 
     @Override
     public <T> void onSuccess(NetworkResponseInterface<T> networkResponse) {
-        Assert.assertNotNull(networkInteractorResponseInterface);
+        assertNotNull(networkInteractorResponseInterface);
         networkInteractorResponseInterface.onNetworkInteractorCallSuccessful(networkResponse);
     }
 

@@ -1,10 +1,8 @@
 package com.instanect.aks_mvp.mvp.presenter;
 
-import com.instanect.accountcommon.account.account.operations.interfaces.response.AccountCreateResponseInterface;
-import com.instanect.accountcommon.account.account.operations.interfaces.response.AccountQueryResponseInterface;
-import com.instanect.accountcommon.account.account.operations.interfaces.response.AccountUpdateResponseInterface;
 import com.instanect.aks_mvp.LogTagGenerator;
-import com.instanect.aks_mvp.mvp.interactors.account.interfaces.AccountInteractorInterface;
+import com.instanect.aks_mvp.mvp.interactors.business.interfaces.BusinessLogicInteractorInterface;
+import com.instanect.aks_mvp.mvp.interactors.business.interfaces.BusinessLogicInteractorResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseInteractorResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.extractor.interfaces.ExtractorInteractorInterface;
@@ -15,28 +13,21 @@ import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.PreferencesI
 import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.PreferencesInteractorResponseInterface;
 import com.instanect.aks_mvp.mvp.presenter.interfaces.PresenterInterface;
 
-import java.lang.reflect.InvocationTargetException;
-
 public class PresenterBuilder {
 
     private final String TAG = LogTagGenerator.getTag(PresenterBuilder.class);
 
-    private AccountInteractorInterface accountInteractorInterface = null;
     private DatabaseInteractorInterface databaseInteractorInterface = null;
     private ExtractorInteractorInterface extractorInteractorInterface = null;
     private NetworkInteractorInterface networkInteractorInterface = null;
     private PreferencesInteractorInterface preferencesInteractorInterface = null;
+    private BusinessLogicInteractorInterface businessLogicInteractorInterface = null;
 
     private Class<? extends PresenterInterface> cPresenterInterface;
 
     public PresenterBuilder setPresenterClass(Class<? extends PresenterInterface> cPresenterInterface) {
 
         this.cPresenterInterface = cPresenterInterface;
-        return this;
-    }
-
-    public PresenterBuilder setAccountInteractorInterface(AccountInteractorInterface accountInteractorInterface) {
-        this.accountInteractorInterface = accountInteractorInterface;
         return this;
     }
 
@@ -60,11 +51,13 @@ public class PresenterBuilder {
         return this;
     }
 
+    public PresenterBuilder setBusinessLogicInteractorInterface(BusinessLogicInteractorInterface businessLogicInteractorInterface) {
+        this.businessLogicInteractorInterface = businessLogicInteractorInterface;
+        return this;
+    }
 
     public PresenterInterface build() throws
-            NoSuchMethodException,
             IllegalAccessException,
-            InvocationTargetException,
             InstantiationException {
 
 
@@ -81,22 +74,6 @@ public class PresenterBuilder {
 
     private void setPresenterAsResponseToInteractors(PresenterInterface presenterInterface) {
 
-        if (accountInteractorInterface != null) {
-
-            if (presenterInterface instanceof AccountCreateResponseInterface)
-                accountInteractorInterface.setAccountCreateResponseInterface(
-                        (AccountCreateResponseInterface) presenterInterface);
-
-            if (presenterInterface instanceof AccountUpdateResponseInterface)
-                accountInteractorInterface.setAccountUpdateResponseInterface(
-                        (AccountUpdateResponseInterface) presenterInterface
-                );
-
-            if (presenterInterface instanceof AccountQueryResponseInterface)
-                accountInteractorInterface.setAccountQueryResponseInterface(
-                        (AccountQueryResponseInterface) presenterInterface
-                );
-        }
         if (databaseInteractorInterface != null)
             if (presenterInterface instanceof DatabaseInteractorResponseInterface)
                 databaseInteractorInterface.setDatabaseInteractorResponseInterface(
@@ -121,12 +98,15 @@ public class PresenterBuilder {
                         (PreferencesInteractorResponseInterface) presenterInterface);
         }
 
+        if (businessLogicInteractorInterface != null)
+            if (presenterInterface instanceof BusinessLogicInteractorInterface)
+                businessLogicInteractorInterface.setBusinessLogicInteractorResponseInterface(
+                        (BusinessLogicInteractorResponseInterface) presenterInterface
+                );
     }
 
     private void setInteractors(PresenterInterface presenterInterface) {
 
-        if (accountInteractorInterface != null)
-            presenterInterface.setAccountInteractorInterface(accountInteractorInterface);
         if (databaseInteractorInterface != null)
             presenterInterface.setDatabaseInteractorInterface(databaseInteractorInterface);
         if (extractorInteractorInterface != null)
@@ -135,6 +115,7 @@ public class PresenterBuilder {
             presenterInterface.setNetworkInteractorInterface(networkInteractorInterface);
         if (preferencesInteractorInterface != null)
             presenterInterface.setPreferencesInteractorInterface(preferencesInteractorInterface);
-
+        if (businessLogicInteractorInterface != null)
+            presenterInterface.setBusinessLogicInteractorInterface(businessLogicInteractorInterface);
     }
 }
