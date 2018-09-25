@@ -1,15 +1,15 @@
 package com.instanect.aks_mvp.mvp.interactors.file;
 
-import com.instanect.aks_mvp.mvp.interactors.file.interfaces.AbstractFileInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.file.interfaces.FileHelperInterface;
+import com.instanect.aks_mvp.mvp.interactors.file.interfaces.FileInteractorInterface;
 
 import java.io.FileNotFoundException;
 
-public abstract class AbstractFileInteractor implements AbstractFileInteractorInterface {
+public abstract class FileInteractor implements FileInteractorInterface {
 
     private FileHelperInterface fileHelperInterface;
 
-    public AbstractFileInteractor(FileHelperInterface fileHelperInterface) {
+    public FileInteractor(FileHelperInterface fileHelperInterface) {
 
         this.fileHelperInterface = fileHelperInterface;
     }

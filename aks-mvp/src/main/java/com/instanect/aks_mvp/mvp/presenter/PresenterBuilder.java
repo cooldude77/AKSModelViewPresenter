@@ -7,6 +7,8 @@ import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseInterac
 import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseInteractorResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.extractor.interfaces.ExtractorInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.extractor.interfaces.ExtractorInteractorResponseInterface;
+import com.instanect.aks_mvp.mvp.interactors.file.interfaces.FileInteractorInterface;
+import com.instanect.aks_mvp.mvp.interactors.file.interfaces.FileInteractorResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteractorResponseInterface;
 import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.PreferencesInteractorInterface;
@@ -22,6 +24,7 @@ public class PresenterBuilder {
     private NetworkInteractorInterface networkInteractorInterface = null;
     private PreferencesInteractorInterface preferencesInteractorInterface = null;
     private BusinessLogicInteractorInterface businessLogicInteractorInterface = null;
+    private FileInteractorInterface fileInteractorInterface;
 
     private Class<? extends PresenterInterface> cPresenterInterface;
 
@@ -53,6 +56,11 @@ public class PresenterBuilder {
 
     public PresenterBuilder setBusinessLogicInteractorInterface(BusinessLogicInteractorInterface businessLogicInteractorInterface) {
         this.businessLogicInteractorInterface = businessLogicInteractorInterface;
+        return this;
+    }
+
+    public PresenterBuilder setFileInteractorInterface(FileInteractorInterface fileInteractorInterface) {
+        this.fileInteractorInterface = fileInteractorInterface;
         return this;
     }
 
@@ -103,6 +111,12 @@ public class PresenterBuilder {
                 businessLogicInteractorInterface.setBusinessLogicInteractorResponseInterface(
                         (BusinessLogicInteractorResponseInterface) presenterInterface
                 );
+
+        if (fileInteractorInterface != null)
+            if (presenterInterface instanceof FileInteractorInterface)
+                fileInteractorInterface.setFileInteractorResponseInterface(
+                        (FileInteractorResponseInterface) presenterInterface
+                );
     }
 
     private void setInteractors(PresenterInterface presenterInterface) {
@@ -117,5 +131,7 @@ public class PresenterBuilder {
             presenterInterface.setPreferencesInteractorInterface(preferencesInteractorInterface);
         if (businessLogicInteractorInterface != null)
             presenterInterface.setBusinessLogicInteractorInterface(businessLogicInteractorInterface);
+        if (fileInteractorInterface != null)
+            presenterInterface.setFileInteractorInterface(fileInteractorInterface);
     }
 }

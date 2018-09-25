@@ -3,6 +3,7 @@ package com.instanect.aks_mvp.mvp.presenter;
 import com.instanect.aks_mvp.mvp.interactors.business.interfaces.BusinessLogicInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.database.interfaces.DatabaseInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.extractor.interfaces.ExtractorInteractorInterface;
+import com.instanect.aks_mvp.mvp.interactors.file.interfaces.FileInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.network.interfaces.NetworkInteractorInterface;
 import com.instanect.aks_mvp.mvp.interactors.preferences.interfaces.PreferencesInteractorInterface;
 import com.instanect.aks_mvp.mvp.presenter.interfaces.PresenterInterface;
@@ -21,6 +22,7 @@ public abstract class AbstractPresenter implements PresenterInterface {
     private PreferencesInteractorInterface preferencesInteractorInterface;
     private BusinessLogicInteractorInterface businessLogicInteractorInterface;
     private PresenterResponseInterface presenterResponseInterface;
+    private FileInteractorInterface fileInteractorInterface;
 
     @Override
     public void setPresenterResponseInterface(PresenterResponseInterface presenterResponseInterface) {
@@ -81,5 +83,15 @@ public abstract class AbstractPresenter implements PresenterInterface {
     @Override
     public void setBusinessLogicInteractorInterface(BusinessLogicInteractorInterface businessLogicInteractorInterface) {
         this.businessLogicInteractorInterface = businessLogicInteractorInterface;
+    }
+
+    @Override
+    public FileInteractorInterface getFileInteractorInterface() {
+        return fileInteractorInterface;
+    }
+
+    @Override
+    public void setFileInteractorInterface(FileInteractorInterface fileInteractorInterface) {
+        this.fileInteractorInterface = fileInteractorInterface;
     }
 }
