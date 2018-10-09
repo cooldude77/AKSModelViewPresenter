@@ -35,6 +35,12 @@ public class AbstractView implements ViewInterface {
         return appViewHelperInterface.findViewById(resIdButton);
     }
 
+    @Override
+    public View findView(int resId) {
+        return appViewHelperInterface.findViewById(resId);
+    }
+
+
     /**
      * Generic function to get form control values
      *

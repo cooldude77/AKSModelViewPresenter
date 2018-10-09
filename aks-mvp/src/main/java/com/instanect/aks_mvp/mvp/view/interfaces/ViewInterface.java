@@ -1,5 +1,6 @@
 package com.instanect.aks_mvp.mvp.view.interfaces;
 
+import android.view.View;
 import android.widget.Button;
 
 /**
@@ -23,6 +24,8 @@ public interface ViewInterface {
     void toastShort(int resId);
 
     Button findButton(int resIdButton);
+
+    View findView(int resId);
 
     void toastLong(String string);
 
