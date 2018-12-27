@@ -14,25 +14,30 @@ public class AbstractNetworkPresenter extends AbstractPresenter implements Netwo
     @Override
     public <T> void onNetworkInteractorCallSuccessful(NetworkResponseInterface<T> networkResponse) {
 
+        getPresenterResponseInterface().onNetworkCallSuccess((String) networkResponse.getResponse());
+
     }
 
     @Override
     public void onNetworkInteractorScenarioCallFailure(String failureMessages, int errorCode) {
 
+        getPresenterResponseInterface().onNetworkCallFailure(failureMessages, errorCode);
     }
 
     @Override
     public void onInternetNotAvailable() {
 
+        getPresenterResponseInterface().onInternetNotAvailable();
     }
 
     @Override
     public void onAdditionalUrlNotAvailable(String messageOnNotAvailable) {
 
+        getPresenterResponseInterface().onAdditionalUrlNotAvailable(messageOnNotAvailable);
     }
 
     @Override
     public void onNetworkCallAbort() {
-
+        getPresenterResponseInterface().onNetworkCallAbort();
     }
 }
