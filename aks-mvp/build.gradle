@@ -38,7 +38,7 @@ ext {
     siteUrl = 'https://github.com/cooldude77/AKSModelViewPresenter'
     gitUrl = 'https://github.com/cooldude77/AKSModelViewPresenter.git'
 
-    libraryVersion = '0.0.62'
+    libraryVersion = '0.1.0-alpha-03'
 
     developerId = 'cooldude77'
     developerName = 'Ashvini'
