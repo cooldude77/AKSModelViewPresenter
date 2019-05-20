@@ -1,7 +1,7 @@
 package com.instanect.aks_mvp.mvp.interactors;
 
 
-import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 
 import com.instanect.aks_mvp.mvp.interactors.alert.AbstractAlertDialog;
 import com.instanect.aks_mvp.mvp.interactors.alert.AppResourceGetterInterface;

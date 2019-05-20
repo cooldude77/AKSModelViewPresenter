@@ -2,7 +2,8 @@ package com.instanect.aks_mvp.mvp.interactors.alert;
 
 
 import android.content.Context;
-import android.support.v7.app.AlertDialog;
+
+import androidx.appcompat.app.AlertDialog;
 
 import static junit.framework.Assert.assertNotNull;
 

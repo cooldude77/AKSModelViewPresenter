@@ -1,7 +1,8 @@
 package com.instanect.aks_mvp.mvp.alert;
 
 import android.content.Context;
-import android.support.v7.app.AlertDialog;
+
+import androidx.appcompat.app.AlertDialog;
 
 /**
  * Created by AKS on 12/28/2017.

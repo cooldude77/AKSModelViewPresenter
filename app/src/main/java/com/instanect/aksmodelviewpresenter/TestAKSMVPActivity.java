@@ -1,8 +1,9 @@
 package com.instanect.aksmodelviewpresenter;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.instanect.aksmodelviewpresenter.application.MainApplication;
 import com.instanect.aksmodelviewpresenter.presenter.MVPPresenter;
