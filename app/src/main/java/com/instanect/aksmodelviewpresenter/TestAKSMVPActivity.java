@@ -10,7 +10,7 @@ import com.instanect.aksmodelviewpresenter.presenter.MVPPresenter;
 
 import javax.inject.Inject;
 
-import static junit.framework.Assert.assertNotNull;
+import static junit.framework.TestCase.assertNotNull;
 
 /**
  * Created by AKS on 3/14/2018.
