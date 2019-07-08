@@ -10,12 +10,8 @@ import androidx.appcompat.app.AlertDialog;
 
 public class AlertDialogBuilderProvider {
 
-    public AlertDialog.Builder getBuilderV7(Context context) {
+    public AlertDialog.Builder getBuilder(Context context) {
         return new AlertDialog.Builder(context);
-    }
-
-    public android.app.AlertDialog.Builder getBuilder(Context context) {
-        return new android.app.AlertDialog.Builder(context);
     }
 
 }
