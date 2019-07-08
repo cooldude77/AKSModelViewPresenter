@@ -1,4 +1,4 @@
-package di;
+package com.instanect.aks_mvp.di;
 
 import android.content.Context;
 
