@@ -54,7 +54,7 @@ ext {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.google.code.gson:gson:2.8.4'
+    implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'com.instanect.accountcommon:accountcommon:0.0.16'
     implementation 'com.instanect.networkcommon:networkcommon:0.0.5'
