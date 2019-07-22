@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.instanect.aks_mvp.mvp.alert.GenericAlertDialogBuilder;
+import com.instanect.aks_mvp.mvp.presenter.interfaces.PresenterNetworkResponseInterface;
 import com.instanect.aksmodelviewpresenter.application.MainApplication;
 import com.instanect.aksmodelviewpresenter.presenter.MVPPresenter;
 
@@ -17,7 +18,7 @@ import static junit.framework.TestCase.assertNotNull;
  * Created by AKS on 3/14/2018.
  */
 
-public class TestAKSMVPActivity extends AppCompatActivity {
+public class TestAKSMVPActivity extends AppCompatActivity implements PresenterNetworkResponseInterface {
     @Inject
     MVPPresenter mvpPresenter;
     @Inject
@@ -32,6 +33,21 @@ public class TestAKSMVPActivity extends AppCompatActivity {
                 .inject(this);
 
         assertNotNull(mvpPresenter);
+
+    }
+
+    @Override
+    public void onInternetNotAvailable() {
+
+    }
+
+    @Override
+    public void onAdditionalUrlNotAvailable(String messageOnNotAvailable) {
+
+    }
+
+    @Override
+    public void onNetworkCallAbort() {
 
     }
 }

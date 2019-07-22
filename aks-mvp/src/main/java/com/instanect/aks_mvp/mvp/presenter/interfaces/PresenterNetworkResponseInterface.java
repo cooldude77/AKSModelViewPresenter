@@ -6,11 +6,9 @@ package com.instanect.aks_mvp.mvp.presenter.interfaces;
 
 public interface PresenterNetworkResponseInterface extends PresenterResponseInterface {
 
-    void onNetworkCallSuccess(String successMessage);
+    // Success methods are defined by individual presenters
 
-    // When scenario fail
-    void onNetworkCallFailure(
-            String failureMessages, int errorCode);
+    // Here only common failure methods are not
 
     // When internet connection failed
     void onInternetNotAvailable();
