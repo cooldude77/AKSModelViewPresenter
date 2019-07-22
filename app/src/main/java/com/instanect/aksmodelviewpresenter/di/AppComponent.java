@@ -1,7 +1,5 @@
 package com.instanect.aksmodelviewpresenter.di;
 
-import com.instanect.aksmodelviewpresenter.TestAKSMVPActivity;
-
 import dagger.Component;
 
 /**
@@ -10,6 +8,7 @@ import dagger.Component;
 @Component(modules = {AppModule.class})
 public interface AppComponent {
 
-    void inject(TestAKSMVPActivity testAKSMVPActivity);
+    TestAKSMVPActivitySubComponent.Builder getTestAKSMVPActivitySubComponentBuilder();
+
 
 }

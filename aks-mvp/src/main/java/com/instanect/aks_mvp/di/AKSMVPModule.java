@@ -30,7 +30,7 @@ public class AKSMVPModule {
     }
 
     @Provides
-    public AccountInteractorBuilder provideAccountInteractorBuilder() {
+    AccountInteractorBuilder provideAccountInteractorBuilder() {
         return new AccountInteractorBuilder();
     }
 

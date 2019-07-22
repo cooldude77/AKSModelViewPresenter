@@ -6,7 +6,6 @@ import com.instanect.aksmodelviewpresenter.classes.DatabaseApi;
 import com.instanect.aksmodelviewpresenter.classes.Extractor;
 import com.instanect.aksmodelviewpresenter.classes.NetworkApi;
 import com.instanect.aksmodelviewpresenter.classes.Preferences;
-import com.instanect.aksmodelviewpresenter.interactors.AccountInteractor;
 import com.instanect.aksmodelviewpresenter.interactors.BusinessLogicInteractor;
 import com.instanect.aksmodelviewpresenter.interactors.DatabaseInteractor;
 import com.instanect.aksmodelviewpresenter.interactors.ExtractorInteractor;
@@ -25,9 +24,6 @@ public class AppModule {
 
     @Provides
     MVPPresenter provideMVPPresenter() {
-
-        AccountInteractor accountInteractor
-                = new AccountInteractor();
 
         DatabaseInteractor databaseInteractor
                 = new DatabaseInteractor(
