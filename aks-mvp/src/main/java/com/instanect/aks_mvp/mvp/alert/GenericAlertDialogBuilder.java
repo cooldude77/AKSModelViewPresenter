@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,12 @@ import android.view.ViewGroup;
 import androidx.appcompat.app.AlertDialog;
 
 import com.instanect.aks_mvp.LogTagGenerator;
+import com.instanect.aks_mvp.mvp.alert.interfaces.GenericAlertDialogResponseInterface;
+import com.instanect.aks_mvp.mvp.alert.interfaces.GenericAlertDialogViewResponseInterface;
+import com.instanect.aks_mvp.mvp.alert.interfaces.base.GenericAlertDialogBaseResponseInterface;
+import com.instanect.aks_mvp.mvp.alert.interfaces.neutral.GenericAlertDialogViewWithNeutralResponseInterface;
+import com.instanect.aks_mvp.mvp.alert.interfaces.neutral.GenericAlertDialogWithNeutralResponseInterface;
+import com.instanect.aks_mvp.mvp.exception.GenericAlertDialogBuilderException;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -27,7 +32,7 @@ public class GenericAlertDialogBuilder {
     private String message;
     private String positiveButtonText;
     private String negativeButtonText;
-    private GenericAlertDialogResponseInterface onResponse;
+    private GenericAlertDialogBaseResponseInterface onResponse;
     private int alertCode;
     private View view;
     private String neutralButtonText;
@@ -129,7 +134,7 @@ public class GenericAlertDialogBuilder {
     }
 
     public GenericAlertDialogBuilder setResponse(
-            GenericAlertDialogResponseInterface response, int alertCode) {
+            GenericAlertDialogBaseResponseInterface response, int alertCode) {
         onResponse = response;
         this.alertCode = alertCode;
         return this;
@@ -141,35 +146,52 @@ public class GenericAlertDialogBuilder {
         return this;
     }
 
-    public Dialog build() throws IllegalArgumentException {
+    public Dialog build() throws GenericAlertDialogBuilderException {
 
-        if (builder == null || inflater == null)
-            throw new IllegalArgumentException("Builder or inflater is null, " +
-                    "have you called builderV7() method?");
+        // should be true for view/non view
+        if (builder == null || context == null || inflater == null)
+            throw new GenericAlertDialogBuilderException("Builder/context/inflater is null");
         if (title == null)
-            throw new IllegalArgumentException("Since view is not null, " +
-                    "and response interface is set, the response interface should be of " +
-                    "type GenericAlertDialogViewResponseInterface");
-        if (positiveButtonText == null)
-            throw new IllegalArgumentException("Positive Text not provided");
-
-        if (message == null && view == null) // If view is not null , there
-            // is no need of message
-            throw new IllegalArgumentException("Message is empty");
-
+            throw new GenericAlertDialogBuilderException("Title is null");
         if (onResponse == null)
-            throw new IllegalArgumentException("On Response is null");
+            throw new GenericAlertDialogBuilderException("On Response is null");
+        if (positiveButtonText == null)
+            throw new GenericAlertDialogBuilderException("Positive Text not provided");
 
-        if (view != null
-                && !(onResponse instanceof GenericAlertDialogViewResponseInterface))
-            throw new IllegalArgumentException("");
+        if (neutralButtonText != null)
+            if (!(
+                    onResponse instanceof GenericAlertDialogWithNeutralResponseInterface
+                            || onResponse instanceof GenericAlertDialogViewWithNeutralResponseInterface)
+            )
+                throw new GenericAlertDialogBuilderException("Neutral Button Text Exists. " +
+                        "The response interface should be of type \"GenericAlertDialogWithNeutralResponseInterface\" or " +
+                        "\"GenericAlertDialogViewWithNeutralResponseInterface\"");
+
+        // for view
+        if (view != null) {
+
+            if (!(onResponse instanceof GenericAlertDialogViewResponseInterface))
+                throw new GenericAlertDialogBuilderException("On Response is either null " +
+                        "or it is not an instance of \"GenericAlertDialogViewResponseInterface\" ");
+        } else {
+            // for non view
+
+            if (message == null) // If view is not null , there
+                // is no need of message
+                throw new GenericAlertDialogBuilderException("Message is empty");
+
+
+        }
 
         final AlertDialog alertDialog = builder.create();
         alertDialog.setTitle(title);
-        alertDialog.setMessage(message);
 
-        if (view != null)
+        if (view != null) {
             alertDialog.setView(view);
+        } else {
+            alertDialog.setMessage(message);
+        }
+
 
         alertDialog.setButton(DialogInterface.BUTTON_POSITIVE,
                 positiveButtonText,
@@ -180,11 +202,8 @@ public class GenericAlertDialogBuilder {
                             ((GenericAlertDialogViewResponseInterface) onResponse)
                                     .onPositiveButtonClicked(alertCode, view, objectToBePassedToCaller);
                         else {
-                            if (onResponse != null)
-                                onResponse.onPositiveButtonClicked(alertCode, objectToBePassedToCaller);
-                            else {
-                                Log.w(TAG, "On response is null");
-                            }
+                            ((GenericAlertDialogResponseInterface) onResponse)
+                                    .onPositiveButtonClicked(alertCode, objectToBePassedToCaller);
                         }
                         // Need to dismiss this manually as the view stays even
                         // after the dialog is closed
@@ -196,6 +215,7 @@ public class GenericAlertDialogBuilder {
 
                     }
                 });
+
         if (negativeButtonText != null)
             alertDialog.setButton(
                     DialogInterface.BUTTON_NEGATIVE,
@@ -206,34 +226,35 @@ public class GenericAlertDialogBuilder {
                             if (view != null)
                                 ((GenericAlertDialogViewResponseInterface) onResponse)
                                         .onNegativeButtonClicked(alertCode, view, objectToBePassedToCaller);
-                            else {
-                                if (onResponse != null)
-                                    onResponse.onNegativeButtonClicked(alertCode, objectToBePassedToCaller);
-                                else {
-                                    Log.w(TAG, "On response is null");
-                                }
-
-                                if (neutralButtonText != null)
-                                    builder.setNeutralButton(neutralButtonText,
-                                            new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialogInterface, int i) {
-
-                                                    ((GenericAlertDialogWithNeutralResponseInterface) onResponse)
-                                                            .onNeutralButtonPressed(alertCode);
-                                                }
-                                            });
-                            }
-                            // Need to dismiss this manually as the view stays even
-                            // after the dialog is closed
-                            if (alertDialog.isShowing()) {
-                                alertDialog.dismiss();
-                                if (view != null)
-                                    ((ViewGroup) view.getParent()).removeView(view);
-                            }
-
+                            else
+                                ((GenericAlertDialogResponseInterface) onResponse).onNegativeButtonClicked(alertCode, objectToBePassedToCaller);
                         }
                     });
+
+        if (neutralButtonText != null)
+            builder.setNeutralButton(neutralButtonText,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                            if (view != null)
+                                ((GenericAlertDialogViewWithNeutralResponseInterface) onResponse)
+                                        .onNeutralButtonPressed(alertCode, view, objectToBePassedToCaller);
+                            else
+                                ((GenericAlertDialogWithNeutralResponseInterface) onResponse)
+                                        .onNeutralButtonPressed(alertCode, objectToBePassedToCaller);
+                        }
+                    });
+
+        // Need to dismiss this manually as the view stays even
+        // after the dialog is closed
+        if (alertDialog.isShowing()) {
+            alertDialog.dismiss();
+            if (view != null)
+                ((ViewGroup) view.getParent()).removeView(view);
+        }
+
+
         return alertDialog;
     }
 
