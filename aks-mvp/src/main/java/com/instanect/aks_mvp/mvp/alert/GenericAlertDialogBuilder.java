@@ -40,6 +40,7 @@ public class GenericAlertDialogBuilder {
     private AlertDialog.Builder builder;
     private Object objectToBePassedToCaller;
     private Context context;
+    private int style;
 
     public GenericAlertDialogBuilder(AlertDialogBuilderProvider alertDialogBuilderProvider) {
 
@@ -47,12 +48,10 @@ public class GenericAlertDialogBuilder {
     }
 
     // Context should always be activity context
-    public GenericAlertDialogBuilder builder(Context context) {
+    public GenericAlertDialogBuilder builder(Context context) throws GenericAlertDialogBuilderException {
 
         if (context == null)
-            throw new IllegalArgumentException("Context is null");
-
-        this.builder = alertDialogBuilderProvider.getBuilder(context);
+            throw new GenericAlertDialogBuilderException("Context is null");
 
         this.inflater = (LayoutInflater) context
                 .getSystemService(Service.LAYOUT_INFLATER_SERVICE);
@@ -65,10 +64,17 @@ public class GenericAlertDialogBuilder {
         negativeButtonText = null;
         neutralButtonText = null;
         alertCode = -1;
+        style = -1;
         view = null;
         onResponse = null;
         objectToBePassedToCaller = null;
 
+        return this;
+    }
+
+    public GenericAlertDialogBuilder setStyle(int style) {
+
+        this.style = style;
         return this;
     }
 
@@ -182,6 +188,12 @@ public class GenericAlertDialogBuilder {
 
 
         }
+
+        if (style != -1)
+            builder = alertDialogBuilderProvider.getBuilder(context, style);
+        else
+            builder = alertDialogBuilderProvider.getBuilder(context);
+
 
         final AlertDialog alertDialog = builder.create();
         alertDialog.setTitle(title);
