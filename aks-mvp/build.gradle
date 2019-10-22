@@ -6,8 +6,8 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 29
-        versionCode 71
-        versionName "1.0.8"
+        versionCode 72
+        versionName "1.0.9"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -38,7 +38,7 @@ ext {
     siteUrl = 'https://github.com/cooldude77/AKSModelViewPresenter'
     gitUrl = 'https://github.com/cooldude77/AKSModelViewPresenter.git'
 
-    libraryVersion = '1.0.8'
+    libraryVersion = '1.0.9'
 
     developerId = 'cooldude77'
     developerName = 'Ashvini'

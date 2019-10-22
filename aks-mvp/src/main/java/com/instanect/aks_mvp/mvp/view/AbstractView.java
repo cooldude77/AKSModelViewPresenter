@@ -32,7 +32,7 @@ public class AbstractView implements ViewInterface {
     @Override
     public Button findButton(int resIdButton) {
 
-        return appViewHelperInterface.findViewById(resIdButton);
+        return (Button) appViewHelperInterface.findViewById(resIdButton);
     }
 
     @Override
