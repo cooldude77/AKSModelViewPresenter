@@ -18,7 +18,7 @@ import static junit.framework.Assert.assertNotNull;
  * Created by AKS on 12/26/2017.
  */
 
-public class AppViewHelper implements AppViewHelperInterface{
+public class AppViewHelper implements AppViewHelperInterface {
 
     private final Context context;
     private View view;
@@ -123,9 +123,9 @@ public class AppViewHelper implements AppViewHelperInterface{
         }
     }
 
-    public Button findViewById(int resIdButton) {
+    public View findViewById(int resId) {
         assertNotNull(view);
-        return view.findViewById(resIdButton);
+        return view.findViewById(resId);
     }
 
     public String getStringFromResource(int stringResId) {

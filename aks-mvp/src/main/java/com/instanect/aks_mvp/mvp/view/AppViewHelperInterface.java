@@ -8,7 +8,7 @@ import android.widget.Button;
  */
 
 public interface AppViewHelperInterface {
-    Button findViewById(int resIdButton);
+    View findViewById(int resIdButton);
 
     void setView(View view);
 
