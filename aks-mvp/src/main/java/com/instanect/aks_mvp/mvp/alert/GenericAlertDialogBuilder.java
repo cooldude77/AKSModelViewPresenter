@@ -155,8 +155,8 @@ public class GenericAlertDialogBuilder {
     public Dialog build() throws GenericAlertDialogBuilderException {
 
         // should be true for view/non view
-        if (builder == null || context == null || inflater == null)
-            throw new GenericAlertDialogBuilderException("Builder/context/inflater is null");
+        if (context == null || inflater == null)
+            throw new GenericAlertDialogBuilderException("Context/inflater is null");
         if (title == null)
             throw new GenericAlertDialogBuilderException("Title is null");
         if (onResponse == null)
